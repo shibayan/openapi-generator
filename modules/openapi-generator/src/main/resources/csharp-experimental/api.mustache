@@ -1,0 +1,357 @@
+{{>partial_header}}
+
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
+using {{packageName}}.Client;
+{{#hasImport}}using {{packageName}}.{{modelPackage}};
+{{/hasImport}}
+
+namespace {{packageName}}.{{apiPackage}}
+{
+    {{#operations}}
+
+    /// <summary>
+    /// Represents a collection of functions to interact with the API endpoints
+    /// </summary>
+    public partial class {{classname}}
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{classname}}"/> class.
+        /// </summary>
+        /// <returns></returns>
+        public {{classname}}()
+            : this(new {{packageName}}.Client.Configuration())
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{classname}}"/> class.
+        /// </summary>
+        /// <returns></returns>
+        public {{classname}}(string basePath)
+            : this(new {{packageName}}.Client.Configuration { BasePath = basePath })
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{classname}}"/> class
+        /// using Configuration object
+        /// </summary>
+        /// <param name="configuration">An instance of Configuration</param>
+        /// <returns></returns>
+        public {{classname}}({{packageName}}.Client.Configuration configuration)
+            : this(new {{packageName}}.Client.ApiClient(configuration), configuration)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{classname}}"/> class
+        /// using a Configuration object and client instance.
+        /// </summary>
+        /// <param name="client">The client interface for synchronous API access.</param>
+        /// <param name="configuration">The configuration object.</param>
+        public {{classname}}({{packageName}}.Client.ApiClient client, {{packageName}}.Client.IReadableConfiguration configuration)
+        {
+            this.Client = client;
+            this.Configuration = configuration;
+        }
+
+        /// <summary>
+        /// The client for accessing this underlying API synchronously.
+        /// </summary>
+        public {{packageName}}.Client.ApiClient Client { get; }
+
+        /// <summary>
+        /// Gets or sets the configuration object
+        /// </summary>
+        /// <value>An instance of the Configuration</value>
+        public {{packageName}}.Client.IReadableConfiguration Configuration { get; set; }
+
+        {{#operation}}
+        /// <summary>
+        /// {{summary}} {{notes}}
+        /// </summary>
+        /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
+        {{#allParams}}/// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}</param>
+        {{/allParams}}/// <returns>{{#returnType}}{{returnType}}{{/returnType}}</returns>
+        public {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}void{{/returnType}} {{operationId}}({{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}{{^required}} = null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
+        {
+            {{#returnType}}var localVarResponse = {{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
+            return localVarResponse.Data;{{/returnType}}{{^returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{/returnType}}
+        }
+
+        /// <summary>
+        /// {{summary}} {{notes}}
+        /// </summary>
+        /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
+        {{#allParams}}/// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}</param>
+        {{/allParams}}/// <returns>ApiResponse of {{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}object(void){{/returnType}}</returns>
+        public {{packageName}}.Client.ApiResponse<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}object{{/returnType}}> {{operationId}}WithHttpInfo({{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}{{^required}} = null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
+        {
+            var localVarRequestOptions = new {{packageName}}.Client.RequestOptions();
+
+            var contentTypes = new string[]
+            {
+                {{#consumes}}
+                "{{{mediaType}}}"{{#hasMore}}, {{/hasMore}}
+                {{/consumes}}
+            };
+
+            // to determine the Accept header
+            var accepts = new string[]
+            {
+                {{#produces}}
+                "{{{mediaType}}}"{{#hasMore}},{{/hasMore}}
+                {{/produces}}
+            };
+
+            var localVarContentType = {{packageName}}.Client.ClientUtils.SelectHeaderContentType(contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = {{packageName}}.Client.ClientUtils.SelectHeaderAccept(accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            {{#pathParams}}
+            {{#required}}
+            localVarRequestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // path parameter
+            {{/required}}
+            {{^required}}
+            if ({{paramName}} != null)
+            {
+                localVarRequestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // path parameter
+            }
+            {{/required}}
+            {{/pathParams}}
+            {{#queryParams}}
+            {{#required}}
+            localVarRequestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("{{#collectionFormat}}{{collectionFormat}}{{/collectionFormat}}", "{{baseName}}", {{paramName}}, this.Configuration));
+            {{/required}}
+            {{^required}}
+            if ({{paramName}} != null)
+            {
+                localVarRequestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("{{#collectionFormat}}{{collectionFormat}}{{/collectionFormat}}", "{{baseName}}", {{paramName}}, this.Configuration));
+            }
+            {{/required}}
+            {{/queryParams}}
+            {{#headerParams}}
+            {{#required}}
+            localVarRequestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // header parameter
+            {{/required}}
+            {{^required}}
+            if ({{paramName}} != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // header parameter
+            }
+            {{/required}}
+            {{/headerParams}}
+            {{#formParams}}
+            {{#required}}
+            {{#isFile}}
+            localVarRequestOptions.FileParameters.Add("{{baseName}}", {{paramName}});
+            {{/isFile}}
+            {{^isFile}}
+            localVarRequestOptions.FormParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // form parameter
+            {{/isFile}}
+            {{/required}}
+            {{^required}}
+            if ({{paramName}} != null)
+            {
+                {{#isFile}}
+                localVarRequestOptions.FileParameters.Add("{{baseName}}", {{paramName}});
+                {{/isFile}}
+                {{^isFile}}
+                localVarRequestOptions.FormParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // form parameter
+                {{/isFile}}
+            }
+            {{/required}}
+            {{/formParams}}
+            {{#bodyParam}}
+            localVarRequestOptions.Data = {{paramName}};
+            {{/bodyParam}}
+
+            {{#authMethods}}
+            // authentication ({{name}}) required
+            {{#isApiKey}}
+            {{#isKeyInHeader}}
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("{{keyParamName}}")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("{{keyParamName}}", this.Configuration.GetApiKeyWithPrefix("{{keyParamName}}"));
+            }
+            {{/isKeyInHeader}}
+            {{#isKeyInQuery}}
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("{{keyParamName}}")))
+            {
+                localVarRequestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("", "{{keyParamName}}", this.Configuration.GetApiKeyWithPrefix("{{keyParamName}}"), this.Configuration));
+            }
+            {{/isKeyInQuery}}
+            {{/isApiKey}}
+            {{#isBasic}}
+            // http basic authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.Username) || !string.IsNullOrEmpty(this.Configuration.Password))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Basic " + {{packageName}}.Client.ClientUtils.Base64Encode(this.Configuration.Username + ":" + this.Configuration.Password));
+            }
+            {{/isBasic}}
+            {{#isOAuth}}
+            // oauth required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+            {{/isOAuth}}
+            {{/authMethods}}
+
+            // make the HTTP request
+            var localVarResponse = this.Client.{{#lambda.titlecase}}{{#lambda.lowercase}}{{httpMethod}}{{/lambda.lowercase}}{{/lambda.titlecase}}<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}object{{/returnType}}>("{{{path}}}", localVarRequestOptions);
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// {{summary}} {{notes}}
+        /// </summary>
+        /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
+        {{#allParams}}/// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}</param>
+        {{/allParams}}/// <returns>Task of {{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}void{{/returnType}}</returns>
+        {{#returnType}}public async System.Threading.Tasks.Task<{{{returnType}}}>{{/returnType}}{{^returnType}}public async System.Threading.Tasks.Task{{/returnType}} {{operationId}}Async({{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}{{^required}} = null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
+        {
+            {{#returnType}}var localVarResponse = await {{operationId}}WithHttpInfoAsync({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
+            return localVarResponse.Data;{{/returnType}}{{^returnType}}await {{operationId}}WithHttpInfoAsync({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{/returnType}}
+        }
+
+        /// <summary>
+        /// {{summary}} {{notes}}
+        /// </summary>
+        /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
+        {{#allParams}}/// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}</param>
+        {{/allParams}}/// <returns>Task of ApiResponse{{#returnType}} ({{returnType}}){{/returnType}}</returns>
+        public async System.Threading.Tasks.Task<{{packageName}}.Client.ApiResponse<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}object{{/returnType}}>> {{operationId}}WithHttpInfoAsync({{#allParams}}{{{dataType}}}{{^required}}?{{/required}} {{paramName}}{{^required}} = null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
+        {
+            var localVarRequestOptions = new {{packageName}}.Client.RequestOptions();
+
+            var contentTypes = new string[]
+            {
+                {{#consumes}}
+                "{{{mediaType}}}"{{#hasMore}}, {{/hasMore}}
+                {{/consumes}}
+            };
+
+            // to determine the Accept header
+            var accepts = new string[]
+            {
+                {{#produces}}
+                "{{{mediaType}}}"{{#hasMore}},{{/hasMore}}
+                {{/produces}}
+            };
+
+            var localVarContentType = {{packageName}}.Client.ClientUtils.SelectHeaderContentType(contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = {{packageName}}.Client.ClientUtils.SelectHeaderAccept(accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            
+            {{#pathParams}}
+            {{#required}}
+            localVarRequestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // path parameter
+            {{/required}}
+            {{^required}}
+            if ({{paramName}} != null)
+            {
+                localVarRequestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // path parameter
+            }
+            {{/required}}
+            {{/pathParams}}
+            {{#queryParams}}
+            {{#required}}
+            localVarRequestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("{{#collectionFormat}}{{collectionFormat}}{{/collectionFormat}}", "{{baseName}}", {{paramName}}, this.Configuration));
+            {{/required}}
+            {{^required}}
+            if ({{paramName}} != null)
+            {
+                localVarRequestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("{{#collectionFormat}}{{collectionFormat}}{{/collectionFormat}}", "{{baseName}}", {{paramName}}, this.Configuration));
+            }
+            {{/required}}
+            {{/queryParams}}
+            {{#headerParams}}
+            {{#required}}
+            localVarRequestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // header parameter
+            {{/required}}
+            {{^required}}
+            if ({{paramName}} != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // header parameter
+            }
+            {{/required}}
+            {{/headerParams}}
+            {{#formParams}}
+            {{#required}}
+            {{#isFile}}
+            localVarRequestOptions.FileParameters.Add("{{baseName}}", {{paramName}});
+            {{/isFile}}
+            {{^isFile}}
+            localVarRequestOptions.FormParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // form parameter
+            {{/isFile}}
+            {{/required}}
+            {{^required}}
+            if ({{paramName}} != null)
+            {
+                {{#isFile}}
+                localVarRequestOptions.FileParameters.Add("{{baseName}}", {{paramName}});
+                {{/isFile}}
+                {{^isFile}}
+                localVarRequestOptions.FormParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // form parameter
+                {{/isFile}}
+            }
+            {{/required}}
+            {{/formParams}}
+            {{#bodyParam}}
+            localVarRequestOptions.Data = {{paramName}};
+            {{/bodyParam}}
+
+            {{#authMethods}}
+            // authentication ({{name}}) required
+            {{#isApiKey}}
+            {{#isKeyInHeader}}
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("{{keyParamName}}")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("{{keyParamName}}", this.Configuration.GetApiKeyWithPrefix("{{keyParamName}}"));
+            }
+            {{/isKeyInHeader}}
+            {{#isKeyInQuery}}
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("{{keyParamName}}")))
+            {
+                localVarRequestOptions.QueryParameters.Add({{packageName}}.Client.ClientUtils.ParameterToMultiMap("", "{{keyParamName}}", this.Configuration.GetApiKeyWithPrefix("{{keyParamName}}"), this.Configuration));
+            }
+            {{/isKeyInQuery}}
+            {{/isApiKey}}
+            {{#isBasic}}
+            // http basic authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.Username) || !string.IsNullOrEmpty(this.Configuration.Password))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Basic " + {{packageName}}.Client.ClientUtils.Base64Encode(this.Configuration.Username + ":" + this.Configuration.Password));
+            }
+            {{/isBasic}}
+            {{#isOAuth}}
+            // oauth required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+            {{/isOAuth}}
+            {{/authMethods}}
+
+            // make the HTTP request
+
+            var localVarResponse = await this.Client.{{#lambda.titlecase}}{{#lambda.lowercase}}{{httpMethod}}{{/lambda.lowercase}}{{/lambda.titlecase}}Async<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}object{{/returnType}}>("{{{path}}}", localVarRequestOptions);
+
+            return localVarResponse;
+        }
+
+        {{/operation}}
+    }
+    {{/operations}}
+}

@@ -1,0 +1,111 @@
+    /// <summary>
+    /// {{#description}}{{.}}{{/description}}{{^description}}{{classname}}{{/description}}
+    /// </summary>
+    {{#discriminator}}
+    [JsonConverter(typeof(JsonSubtypes), "{{{discriminatorName}}}")]
+    {{#children}}
+    [JsonSubtypes.KnownSubType(typeof({{classname}}), "{{^vendorExtensions.x-discriminator-value}}{{name}}{{/vendorExtensions.x-discriminator-value}}{{#vendorExtensions.x-discriminator-value}}{{{vendorExtensions.x-discriminator-value}}}{{/vendorExtensions.x-discriminator-value}}")]
+    {{/children}}
+    {{#mappedModels}}
+    [JsonSubtypes.KnownSubType(typeof({{{modelName}}}), "{{{mappingName}}}")]
+    {{/mappedModels}}
+    {{/discriminator}}
+    public partial class {{classname}} : {{#parent}}{{{parent}}}, {{/parent}}IEquatable<{{classname}}>
+    {
+        {{#vars}}
+        {{#items.isEnum}}
+        {{#items}}
+        {{^complexType}}
+{{>modelInnerEnum}}
+        {{/complexType}}
+        {{/items}}
+        {{/items.isEnum}}
+        {{#isEnum}}
+        {{^complexType}}
+{{>modelInnerEnum}}
+        {{/complexType}}
+        {{/isEnum}}
+        {{/vars}}
+    {{#hasRequired}}
+    {{^hasOnlyReadOnly}}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{classname}}" /> class.
+        /// </summary>
+        [JsonConstructor]
+        protected {{classname}}() { }
+
+    {{/hasOnlyReadOnly}}
+    {{/hasRequired}}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="{{classname}}" /> class.
+        /// </summary>
+        {{#readWriteVars}}
+        /// <param name="{{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}}">{{#description}}{{description}}{{/description}}{{^description}}{{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}}{{/description}}{{#required}} (required){{/required}}{{#defaultValue}} (default to {{defaultValue}}){{/defaultValue}}.</param>
+        {{/readWriteVars}}
+    {{#hasOnlyReadOnly}}
+        [JsonConstructor]
+    {{/hasOnlyReadOnly}}
+        public {{classname}}({{#readWriteVars}}{{{datatypeWithEnum}}}{{^required}}?{{/required}} {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}}{{#defaultValue}} = {{{defaultValue}}}{{/defaultValue}}{{^defaultValue}} = default{{/defaultValue}}{{^-last}}, {{/-last}}{{/readWriteVars}}){{#parent}} : base({{#parentVars}}{{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}}{{#hasMore}}, {{/hasMore}}{{/parentVars}}){{/parent}}
+        {
+            {{#vars}}
+            {{^isInherited}}
+            {{^isReadOnly}}
+            {{name}} = {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}};
+            {{/isReadOnly}}
+            {{/isInherited}}
+            {{/vars}}
+        }
+
+        {{#vars}}
+        {{^isInherited}}
+        /// <summary>
+        /// {{^description}}Gets or Sets {{{name}}}{{/description}}{{#description}}{{description}}{{/description}}
+        /// </summary>{{#description}}
+        /// <value>{{description}}</value>{{/description}}
+        [JsonProperty("{{baseName}}", NullValueHandling = NullValueHandling.Ignore)]{{#isDate}}
+        [JsonConverter(typeof({{packageName}}.Client.OpenAPIDateConverter))]{{/isDate}}
+        public {{{datatypeWithEnum}}}{{^required}}?{{/required}} {{name}} { get; {{^isReadOnly}}set; {{/isReadOnly}}}
+
+        {{/isInherited}}
+        {{/vars}}
+        /// <summary>
+        /// Returns true if objects are equal
+        /// </summary>
+        /// <param name="obj">Object to be compared</param>
+        /// <returns>Boolean</returns>
+        public override bool Equals(object? obj)
+        {
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals(({{classname}})obj);
+        }
+
+        /// <summary>
+        /// Returns true if {{classname}} instances are equal
+        /// </summary>
+        /// <param name="other">Instance of {{classname}} to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals({{classname}}? other)
+        {
+            if (other is null) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return {{#vars}}{{#parent}}base.Equals(other) &&{{/parent}}{{^isContainer}}{{#isPrimitiveType}}
+                {{name}} == other.{{name}}{{#hasMore}} &&{{/hasMore}}{{/isPrimitiveType}}{{^isPrimitiveType}}
+                Equals({{name}}, other.{{name}}){{#hasMore}} &&{{/hasMore}}{{/isPrimitiveType}}{{/isContainer}}{{#isContainer}}
+                Equals({{name}}, other.{{name}}){{#hasMore}} &&{{/hasMore}}{{/isContainer}}{{/vars}}{{^vars}}{{#parent}}base.Equals(other){{/parent}}{{^parent}}false{{/parent}}{{/vars}};
+        }
+
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>Hash code</returns>
+        public override int GetHashCode()
+        {
+            var hashCode = new HashCode();
+            {{#vars}}
+            hashCode.Add({{name}});
+            {{/vars}}
+            return {{#parent}}base.GetHashCode() ^ {{/parent}}hashCode.ToHashCode();
+        }
+    }

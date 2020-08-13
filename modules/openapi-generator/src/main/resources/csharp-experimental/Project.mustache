@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>{{targetFramework}}</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <PackageReference Include="JsonSubTypes" Version="1.5.2" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+      <PackageReference Include="RestSharp" Version="106.10.1" />
+      <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PackageId>{{packageName}}</PackageId>
+    <Authors>{{packageAuthors}}</Authors>
+    <Company>{{packageCompany}}</Company>
+    <AssemblyTitle>{{packageTitle}}</AssemblyTitle>
+    <Description>{{packageDescription}}</Description>
+    <Copyright>{{packageCopyright}}</Copyright>
+    <Version>{{packageVersion}}</Version>{{#licenseId}}
+    <PackageLicenseExpression>{{licenseId}}</PackageLicenseExpression>{{/licenseId}}
+    <RepositoryUrl>https://{{{gitHost}}}/{{{gitUserId}}}/{{{gitRepoId}}}.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>{{#packageReleaseNotes}}
+    <PackageReleaseNotes>{{packageReleaseNotes}}</PackageReleaseNotes>{{/packageReleaseNotes}}{{#packageTags}}
+    <PackageTags>{{{packageTags}}}</PackageTags>{{/packageTags}}
+  </PropertyGroup>
+
+</Project>

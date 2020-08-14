@@ -90,6 +90,7 @@ namespace Org.OpenAPITools.Models
         /// <summary>
         /// Gets or Sets Number
         /// </summary>
+        [Required]
         [JsonProperty("number", NullValueHandling = NullValueHandling.Ignore)]
         public decimal Number { get; set; }
 
@@ -108,12 +109,14 @@ namespace Org.OpenAPITools.Models
         /// <summary>
         /// Gets or Sets String
         /// </summary>
+        [RegularExpression(@"[a-z]")]
         [JsonProperty("string", NullValueHandling = NullValueHandling.Ignore)]
         public string? String { get; set; }
 
         /// <summary>
         /// Gets or Sets Byte
         /// </summary>
+        [Required]
         [JsonProperty("byte", NullValueHandling = NullValueHandling.Ignore)]
         public byte[] Byte { get; set; }
 
@@ -126,6 +129,7 @@ namespace Org.OpenAPITools.Models
         /// <summary>
         /// Gets or Sets Date
         /// </summary>
+        [Required]
         [JsonProperty("date", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(Org.OpenAPITools.Client.OpenAPIDateConverter))]
         public DateTime Date { get; set; }
@@ -145,6 +149,9 @@ namespace Org.OpenAPITools.Models
         /// <summary>
         /// Gets or Sets Password
         /// </summary>
+        [Required]
+        [MinLength(10)]
+        [MaxLength(64)]
         [JsonProperty("password", NullValueHandling = NullValueHandling.Ignore)]
         public string Password { get; set; }
 
@@ -152,6 +159,7 @@ namespace Org.OpenAPITools.Models
         /// A string that is a 10 digit number. Can have leading zeros.
         /// </summary>
         /// <value>A string that is a 10 digit number. Can have leading zeros.</value>
+        [RegularExpression(@"^\\d{10}$")]
         [JsonProperty("pattern_with_digits", NullValueHandling = NullValueHandling.Ignore)]
         public string? PatternWithDigits { get; set; }
 
@@ -159,6 +167,7 @@ namespace Org.OpenAPITools.Models
         /// A string starting with &#39;image_&#39; (case insensitive) and one to three digits following i.e. Image_01.
         /// </summary>
         /// <value>A string starting with &#39;image_&#39; (case insensitive) and one to three digits following i.e. Image_01.</value>
+        [RegularExpression(@"^image_\\d{1,3}$")]
         [JsonProperty("pattern_with_digits_and_delimiter", NullValueHandling = NullValueHandling.Ignore)]
         public string? PatternWithDigitsAndDelimiter { get; set; }
 

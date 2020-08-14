@@ -153,6 +153,7 @@ namespace Org.OpenAPITools.Models
         /// <summary>
         /// Gets or Sets EnumStringRequired
         /// </summary>
+        [Required]
         [JsonProperty("enum_string_required", NullValueHandling = NullValueHandling.Ignore)]
         public EnumStringRequiredEnum EnumStringRequired { get; set; }
 

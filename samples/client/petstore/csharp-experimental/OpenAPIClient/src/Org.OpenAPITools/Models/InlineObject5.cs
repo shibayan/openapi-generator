@@ -54,6 +54,7 @@ namespace Org.OpenAPITools.Models
         /// file to upload
         /// </summary>
         /// <value>file to upload</value>
+        [Required]
         [JsonProperty("requiredFile", NullValueHandling = NullValueHandling.Ignore)]
         public System.IO.Stream RequiredFile { get; set; }
 

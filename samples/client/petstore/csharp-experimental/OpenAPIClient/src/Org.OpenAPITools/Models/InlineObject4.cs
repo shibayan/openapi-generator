@@ -47,6 +47,7 @@ namespace Org.OpenAPITools.Models
         /// field1
         /// </summary>
         /// <value>field1</value>
+        [Required]
         [JsonProperty("param", NullValueHandling = NullValueHandling.Ignore)]
         public string Param { get; set; }
 
@@ -54,6 +55,7 @@ namespace Org.OpenAPITools.Models
         /// field2
         /// </summary>
         /// <value>field2</value>
+        [Required]
         [JsonProperty("param2", NullValueHandling = NullValueHandling.Ignore)]
         public string Param2 { get; set; }
 

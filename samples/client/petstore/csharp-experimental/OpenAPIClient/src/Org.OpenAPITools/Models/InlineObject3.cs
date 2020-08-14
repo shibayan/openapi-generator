@@ -92,6 +92,7 @@ namespace Org.OpenAPITools.Models
         /// None
         /// </summary>
         /// <value>None</value>
+        [Required]
         [JsonProperty("number", NullValueHandling = NullValueHandling.Ignore)]
         public decimal Number { get; set; }
 
@@ -106,6 +107,7 @@ namespace Org.OpenAPITools.Models
         /// None
         /// </summary>
         /// <value>None</value>
+        [Required]
         [JsonProperty("double", NullValueHandling = NullValueHandling.Ignore)]
         public double Double { get; set; }
 
@@ -113,6 +115,7 @@ namespace Org.OpenAPITools.Models
         /// None
         /// </summary>
         /// <value>None</value>
+        [RegularExpression(@"[a-z]")]
         [JsonProperty("string", NullValueHandling = NullValueHandling.Ignore)]
         public string? String { get; set; }
 
@@ -120,6 +123,8 @@ namespace Org.OpenAPITools.Models
         /// None
         /// </summary>
         /// <value>None</value>
+        [Required]
+        [RegularExpression(@"^[A-Z].*")]
         [JsonProperty("pattern_without_delimiter", NullValueHandling = NullValueHandling.Ignore)]
         public string PatternWithoutDelimiter { get; set; }
 
@@ -127,6 +132,7 @@ namespace Org.OpenAPITools.Models
         /// None
         /// </summary>
         /// <value>None</value>
+        [Required]
         [JsonProperty("byte", NullValueHandling = NullValueHandling.Ignore)]
         public byte[] Byte { get; set; }
 
@@ -156,6 +162,8 @@ namespace Org.OpenAPITools.Models
         /// None
         /// </summary>
         /// <value>None</value>
+        [MinLength(10)]
+        [MaxLength(64)]
         [JsonProperty("password", NullValueHandling = NullValueHandling.Ignore)]
         public string? Password { get; set; }
 

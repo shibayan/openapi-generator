@@ -52,6 +52,7 @@ namespace Org.OpenAPITools.Models
         /// <summary>
         /// Gets or Sets ClassName
         /// </summary>
+        [Required]
         [JsonProperty("className", NullValueHandling = NullValueHandling.Ignore)]
         public string ClassName { get; set; }
 

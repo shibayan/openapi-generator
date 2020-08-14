@@ -62,6 +62,24 @@
         /// {{^description}}Gets or Sets {{{name}}}{{/description}}{{#description}}{{description}}{{/description}}
         /// </summary>{{#description}}
         /// <value>{{description}}</value>{{/description}}
+        {{#required}}
+        [Required]
+        {{/required}}
+        {{#validatable}}
+        {{#hasValidation}}
+        {{#minLength}}
+        [MinLength({{minLength}})]
+        {{/minLength}}
+        {{#maxLength}}
+        [MaxLength({{maxLength}})]
+        {{/maxLength}}
+        {{#pattern}}
+        {{^isByteArray}}
+        [RegularExpression(@"{{{vendorExtensions.x-regex}}}")]
+        {{/isByteArray}}
+        {{/pattern}}
+        {{/hasValidation}}
+        {{/validatable}}
         [JsonProperty("{{baseName}}", NullValueHandling = NullValueHandling.Ignore)]{{#isDate}}
         [JsonConverter(typeof({{packageName}}.Client.OpenAPIDateConverter))]{{/isDate}}
         public {{{datatypeWithEnum}}}{{^required}}?{{/required}} {{name}} { get; {{^isReadOnly}}set; {{/isReadOnly}}}

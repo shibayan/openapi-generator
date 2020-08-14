@@ -1,14 +1,14 @@
 {{>partial_header}}
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+{{#validatable}}
+using System.ComponentModel.DataAnnotations;
+{{/validatable}}
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 {{#models}}
@@ -18,9 +18,6 @@ using JsonSubTypes;
 {{/discriminator}}
 {{/model}}
 {{/models}}
-{{#validatable}}
-using System.ComponentModel.DataAnnotations;
-{{/validatable}}
 
 {{#models}}
 {{#model}}

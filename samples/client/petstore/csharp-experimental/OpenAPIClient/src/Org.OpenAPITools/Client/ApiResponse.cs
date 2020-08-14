@@ -28,7 +28,7 @@ namespace Org.OpenAPITools.Client
         /// <summary>
         /// The content of this response
         /// </summary>
-        Object Content { get; }
+        object Content { get; }
 
         /// <summary>
         /// Gets or sets the status code (HTTP status code)

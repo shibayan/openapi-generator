@@ -10,18 +10,15 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using JsonSubTypes;
-using System.ComponentModel.DataAnnotations;
 
 namespace Org.OpenAPITools.Models
 {

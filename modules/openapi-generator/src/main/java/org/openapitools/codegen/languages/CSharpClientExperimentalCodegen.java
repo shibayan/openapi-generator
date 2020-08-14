@@ -41,16 +41,12 @@ public class CSharpClientExperimentalCodegen extends AbstractCSharpExperimentalC
     @SuppressWarnings({"hiding"})
     private static final Logger LOGGER = LoggerFactory.getLogger(CSharpClientExperimentalCodegen.class);
     private static final List<FrameworkStrategy> frameworkStrategies = Arrays.asList(
-            FrameworkStrategy.NETSTANDARD_2_0,
             FrameworkStrategy.NETSTANDARD_2_1,
-            FrameworkStrategy.NETCOREAPP_2_0,
             FrameworkStrategy.NETCOREAPP_2_1,
-            FrameworkStrategy.NETCOREAPP_2_2,
-            FrameworkStrategy.NETCOREAPP_3_0,
             FrameworkStrategy.NETCOREAPP_3_1,
             FrameworkStrategy.NET_5_0
     );
-    private static FrameworkStrategy defaultFramework = FrameworkStrategy.NETSTANDARD_2_0;
+    private static FrameworkStrategy defaultFramework = FrameworkStrategy.NETSTANDARD_2_1;
     protected final Map<String, String> frameworks;
     protected String packageGuid = "{" + java.util.UUID.randomUUID().toString().toUpperCase(Locale.ROOT) + "}";
     protected String clientPackage = "Org.OpenAPITools.Client";
@@ -379,15 +375,6 @@ public class CSharpClientExperimentalCodegen extends AbstractCSharpExperimentalC
         setTargetFramework(strategy.name);
         setTestTargetFramework(strategy.testTargetFramework);
 
-        if (strategy != FrameworkStrategy.NETSTANDARD_2_0) {
-            LOGGER.warn("If using built-in templates-RestSharp only supports netstandard 2.0 or later.");
-        }
-
-        if (additionalProperties.containsKey(CodegenConstants.GENERATE_PROPERTY_CHANGED)) {
-            LOGGER.warn(CodegenConstants.GENERATE_PROPERTY_CHANGED + " is not supported in the .NET Standard generator.");
-            additionalProperties.remove(CodegenConstants.GENERATE_PROPERTY_CHANGED);
-        }
-
         final AtomicReference<Boolean> excludeTests = new AtomicReference<>();
         syncBooleanProperty(additionalProperties, CodegenConstants.EXCLUDE_TESTS, excludeTests::set, false);
 
@@ -408,16 +395,6 @@ public class CSharpClientExperimentalCodegen extends AbstractCSharpExperimentalC
 
         additionalProperties.put("testPackageName", testPackageName);
 
-        //Compute the relative path to the bin directory where the external assemblies live
-        //This is necessary to properly generate the project file
-        int packageDepth = packageFolder.length() - packageFolder.replace(java.io.File.separator, "").length();
-        String binRelativePath = "..\\";
-        for (int i = 0; i < packageDepth; i = i + 1) {
-            binRelativePath += "..\\";
-        }
-        binRelativePath += "vendor";
-        additionalProperties.put("binRelativePath", binRelativePath);
-
         supportingFiles.add(new SupportingFile("Configuration.mustache", clientPackageDir, "Configuration.cs"));
         supportingFiles.add(new SupportingFile("ApiClient.mustache", clientPackageDir, "ApiClient.cs"));
         supportingFiles.add(new SupportingFile("ApiException.mustache", clientPackageDir, "ApiException.cs"));
@@ -427,8 +404,7 @@ public class CSharpClientExperimentalCodegen extends AbstractCSharpExperimentalC
         supportingFiles.add(new SupportingFile("RequestOptions.mustache", clientPackageDir, "RequestOptions.cs"));
         supportingFiles.add(new SupportingFile("Multimap.mustache", clientPackageDir, "Multimap.cs"));
 
-        supportingFiles.add(new SupportingFile("IReadableConfiguration.mustache",
-                clientPackageDir, "IReadableConfiguration.cs"));
+        supportingFiles.add(new SupportingFile("IReadableConfiguration.mustache", clientPackageDir, "IReadableConfiguration.cs"));
 
         // Only write out test related files if excludeTests is unset or explicitly set to false (see start of this method)
         if (Boolean.FALSE.equals(excludeTests.get())) {
@@ -465,11 +441,11 @@ public class CSharpClientExperimentalCodegen extends AbstractCSharpExperimentalC
 
     public void setTargetFramework(String dotnetFramework) {
         if (!frameworks.containsKey(dotnetFramework)) {
-            LOGGER.warn("Invalid .NET framework version, defaulting to " + this.targetFramework);
+            LOGGER.warn("Invalid .NET Core version, defaulting to " + this.targetFramework);
         } else {
             this.targetFramework = dotnetFramework;
         }
-        LOGGER.info("Generating code for .NET Framework " + this.targetFramework);
+        LOGGER.info("Generating code for .NET Core " + this.targetFramework);
     }
 
     public void setTestTargetFramework(String testTargetFramework) {
@@ -587,17 +563,9 @@ public class CSharpClientExperimentalCodegen extends AbstractCSharpExperimentalC
     // https://docs.microsoft.com/en-us/dotnet/standard/net-standard
     @SuppressWarnings("Duplicates")
     private static abstract class FrameworkStrategy {
-        static FrameworkStrategy NETSTANDARD_2_0 = new FrameworkStrategy("netstandard2.0", ".NET Standard 2.0 compatible", "netcoreapp2.0") {
-        };
-        static FrameworkStrategy NETSTANDARD_2_1 = new FrameworkStrategy("netstandard2.1", ".NET Standard 2.1 compatible", "netcoreapp3.0") {
-        };
-        static FrameworkStrategy NETCOREAPP_2_0 = new FrameworkStrategy("netcoreapp2.0", ".NET Core 2.0 compatible", "netcoreapp2.0") {
+        static FrameworkStrategy NETSTANDARD_2_1 = new FrameworkStrategy("netstandard2.1", ".NET Standard 2.1 compatible", "netcoreapp3.1") {
         };
         static FrameworkStrategy NETCOREAPP_2_1 = new FrameworkStrategy("netcoreapp2.1", ".NET Core 2.1 compatible", "netcoreapp2.1") {
-        };
-        static FrameworkStrategy NETCOREAPP_2_2 = new FrameworkStrategy("netcoreapp2.2", ".NET Core 2.2 compatible", "netcoreapp2.2") {
-        };
-        static FrameworkStrategy NETCOREAPP_3_0 = new FrameworkStrategy("netcoreapp3.0", ".NET Core 3.0 compatible", "netcoreapp3.0") {
         };
         static FrameworkStrategy NETCOREAPP_3_1 = new FrameworkStrategy("netcoreapp3.1", ".NET Core 3.1 compatible", "netcoreapp3.1") {
         };

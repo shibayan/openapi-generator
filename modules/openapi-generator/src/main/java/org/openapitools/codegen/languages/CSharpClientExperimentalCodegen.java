@@ -81,9 +81,6 @@ public class CSharpClientExperimentalCodegen extends AbstractCSharpExperimentalC
                 .includeSchemaSupportFeatures(
                         SchemaSupportFeature.Polymorphism
                 )
-                .includeParameterFeatures(
-                        ParameterFeature.Cookie
-                )
                 .includeClientModificationFeatures(
                         ClientModificationFeature.BasePath,
                         ClientModificationFeature.UserAgent

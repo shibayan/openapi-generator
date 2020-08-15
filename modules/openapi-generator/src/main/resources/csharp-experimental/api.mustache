@@ -95,7 +95,7 @@ namespace {{packageName}}.{{apiPackage}}
             var contentTypes = new string[]
             {
                 {{#consumes}}
-                "{{{mediaType}}}"{{#hasMore}}, {{/hasMore}}
+                "{{{mediaType}}}"{{#hasMore}},{{/hasMore}}
                 {{/consumes}}
             };
 
@@ -251,7 +251,7 @@ namespace {{packageName}}.{{apiPackage}}
 
             var localVarAccept = {{packageName}}.Client.ClientUtils.SelectHeaderAccept(accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            
+
             {{#pathParams}}
             {{#required}}
             localVarRequestOptions.PathParameters.Add("{{baseName}}", {{packageName}}.Client.ClientUtils.ParameterToString({{paramName}}, this.Configuration)); // path parameter

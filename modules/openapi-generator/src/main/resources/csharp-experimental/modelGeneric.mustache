@@ -62,10 +62,10 @@
         /// {{^description}}Gets or Sets {{{name}}}{{/description}}{{#description}}{{description}}{{/description}}
         /// </summary>{{#description}}
         /// <value>{{description}}</value>{{/description}}
+        {{#validatable}}
         {{#required}}
         [Required]
         {{/required}}
-        {{#validatable}}
         {{#hasValidation}}
         {{#minLength}}
         [MinLength({{minLength}})]

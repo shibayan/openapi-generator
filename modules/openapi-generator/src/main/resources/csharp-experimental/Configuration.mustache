@@ -1,11 +1,8 @@
 {{>partial_header}}
 
 using System;
-using System.Reflection;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace {{packageName}}.Client
 {
@@ -33,19 +30,6 @@ namespace {{packageName}}.Client
 
         #region Private Members
 
-        /// <summary>
-        /// Gets or sets the API key based on the authentication name.
-        /// This is the key and value comprising the "secret" for acessing an API.
-        /// </summary>
-        /// <value>The API key.</value>
-        private IDictionary<string, string> _apiKey;
-
-        /// <summary>
-        /// Gets or sets the prefix (e.g. Token) of the API key based on the authentication name.
-        /// </summary>
-        /// <value>The prefix of the API key.</value>
-        private IDictionary<string, string> _apiKeyPrefix;
-
         private string _dateTimeFormat = ISO8601_DATETIME_FORMAT;
         private string _tempFolderPath = Path.GetTempPath();
 
@@ -56,17 +40,8 @@ namespace {{packageName}}.Client
         /// <summary>
         /// Initializes a new instance of the <see cref="Configuration" /> class
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration()
         {
-            UserAgent = "{{#httpUserAgent}}{{.}}{{/httpUserAgent}}{{^httpUserAgent}}OpenAPI-Generator/{{packageVersion}}/csharp{{/httpUserAgent}}";
-            BasePath = "{{{basePath}}}";
-            DefaultHeaders = new Dictionary<string, string>();
-            ApiKey = new Dictionary<string, string>();
-            ApiKeyPrefix = new Dictionary<string, string>();
-
-            // Setting Timeout has side effects (forces ApiClient creation).
-            Timeout = 100000;
         }
 
         /// <summary>
@@ -113,35 +88,35 @@ namespace {{packageName}}.Client
         /// <summary>
         /// Gets or sets the base path for API access.
         /// </summary>
-        public virtual string BasePath { get; set; }
+        public virtual string BasePath { get; set; } = "{{{basePath}}}";
 
         /// <summary>
         /// Gets or sets the default headers.
         /// </summary>
-        public virtual IDictionary<string, string> DefaultHeaders { get; set; }
+        public virtual IDictionary<string, string> DefaultHeaders { get; set; } = new Dictionary<string, string>();
 
         /// <summary>
         /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 100000 milliseconds.
         /// </summary>
-        public virtual int Timeout { get; set; }
+        public virtual int Timeout { get; set; } = 100000;
 
         /// <summary>
         /// Gets or sets the HTTP user agent.
         /// </summary>
         /// <value>Http user agent.</value>
-        public virtual string UserAgent { get; set; }
+        public virtual string? UserAgent { get; set; } = "{{#httpUserAgent}}{{.}}{{/httpUserAgent}}{{^httpUserAgent}}OpenAPI-Generator/{{packageVersion}}/csharp{{/httpUserAgent}}";
 
         /// <summary>
         /// Gets or sets the username (HTTP basic authentication).
         /// </summary>
         /// <value>The username.</value>
-        public virtual string Username { get; set; }
+        public virtual string? Username { get; set; }
 
         /// <summary>
         /// Gets or sets the password (HTTP basic authentication).
         /// </summary>
         /// <value>The password.</value>
-        public virtual string Password { get; set; }
+        public virtual string? Password { get; set; }
 
         /// <summary>
         /// Gets the API key with prefix.
@@ -156,7 +131,7 @@ namespace {{packageName}}.Client
             {
                 return apiKeyPrefix + " " + apiKeyValue;
             }
-            
+
             return apiKeyValue;
         }
 
@@ -166,7 +141,7 @@ namespace {{packageName}}.Client
         /// This helper property simplifies code generation.
         /// </summary>
         /// <value>The access token.</value>
-        public virtual string AccessToken { get; set; }
+        public virtual string? AccessToken { get; set; }
 
         /// <summary>
         /// Gets or sets the temporary folder path to store the files downloaded from the server.
@@ -244,35 +219,13 @@ namespace {{packageName}}.Client
         /// </remarks>
         /// </summary>
         /// <value>The prefix of the API key.</value>
-        public virtual IDictionary<string, string> ApiKeyPrefix
-        {
-            get { return _apiKeyPrefix; }
-            set
-            {
-                if (value == null)
-                {
-                    throw new InvalidOperationException("ApiKeyPrefix collection may not be null.");
-                }
-                _apiKeyPrefix = value;
-            }
-        }
+        public virtual IDictionary<string, string> ApiKeyPrefix { get; set; } = new Dictionary<string, string>();
 
         /// <summary>
         /// Gets or sets the API key based on the authentication name.
         /// </summary>
         /// <value>The API key.</value>
-        public virtual IDictionary<string, string> ApiKey
-        {
-            get { return _apiKey; }
-            set
-            {
-                if (value == null)
-                {
-                    throw new InvalidOperationException("ApiKey collection may not be null.");
-                }
-                _apiKey = value;
-            }
-        }
+        public virtual IDictionary<string, string> ApiKey { get; set; } = new Dictionary<string, string>();
 
         #endregion Properties
 

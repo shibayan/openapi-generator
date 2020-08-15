@@ -87,7 +87,7 @@ namespace {{packageName}}.Client
         /// <returns>Encoded string.</returns>
         public static string Base64Encode(string text)
         {
-            return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(text));
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(text));
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace {{packageName}}.Client
         public static string SelectHeaderAccept(string[] accepts)
         {
             if (accepts.Length == 0)
-                return null;
+                return "application/json";
 
             if (accepts.Contains("application/json", StringComparer.OrdinalIgnoreCase))
                 return "application/json";

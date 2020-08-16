@@ -1,16 +1,15 @@
 {{>partial_header}}
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
 using Xunit;
 
-using System;
-using System.Linq;
-using System.IO;
-using System.Collections.Generic;
 using {{packageName}}.{{apiPackage}};
 using {{packageName}}.{{modelPackage}};
 using {{packageName}}.Client;
-using System.Reflection;
-using Newtonsoft.Json;
 
 {{#models}}
 {{#model}}
@@ -75,7 +74,6 @@ namespace {{packageName}}.Test
         {{/vars}}
 
     }
-
 }
 {{/model}}
 {{/models}}

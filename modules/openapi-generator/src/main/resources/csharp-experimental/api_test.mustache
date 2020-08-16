@@ -1,10 +1,9 @@
 {{>partial_header}}
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Reflection;
-using RestSharp;
+
 using Xunit;
 
 using {{packageName}}.Client;
@@ -61,5 +60,4 @@ namespace {{packageName}}.Test
         }
         {{/operation}}{{/operations}}
     }
-
 }

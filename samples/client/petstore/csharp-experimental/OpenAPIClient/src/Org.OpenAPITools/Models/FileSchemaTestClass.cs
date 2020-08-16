@@ -26,17 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class FileSchemaTestClass : IEquatable<FileSchemaTestClass>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileSchemaTestClass" /> class.
-        /// </summary>
-        /// <param name="file">file.</param>
-        /// <param name="files">files.</param>
-        public FileSchemaTestClass(File? file = default, IReadOnlyList<File>? files = default)
-        {
-            File = file;
-            Files = files;
-        }
-
-        /// <summary>
         /// Gets or Sets File
         /// </summary>
         [JsonProperty("file", NullValueHandling = NullValueHandling.Ignore)]

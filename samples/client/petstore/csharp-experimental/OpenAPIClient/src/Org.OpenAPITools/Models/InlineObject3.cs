@@ -26,47 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class InlineObject3 : IEquatable<InlineObject3>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineObject3" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected InlineObject3() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InlineObject3" /> class.
-        /// </summary>
-        /// <param name="integer">None.</param>
-        /// <param name="int32">None.</param>
-        /// <param name="int64">None.</param>
-        /// <param name="number">None (required).</param>
-        /// <param name="_float">None.</param>
-        /// <param name="_double">None (required).</param>
-        /// <param name="_string">None.</param>
-        /// <param name="patternWithoutDelimiter">None (required).</param>
-        /// <param name="_byte">None (required).</param>
-        /// <param name="binary">None.</param>
-        /// <param name="date">None.</param>
-        /// <param name="dateTime">None.</param>
-        /// <param name="password">None.</param>
-        /// <param name="callback">None.</param>
-        public InlineObject3(int? integer = default, int? int32 = default, long? int64 = default, decimal number = default, float? _float = default, double _double = default, string? _string = default, string patternWithoutDelimiter = default, byte[] _byte = default, System.IO.Stream? binary = default, DateTime? date = default, DateTime? dateTime = default, string? password = default, string? callback = default)
-        {
-            Integer = integer;
-            Int32 = int32;
-            Int64 = int64;
-            Number = number;
-            Float = _float;
-            Double = _double;
-            String = _string;
-            PatternWithoutDelimiter = patternWithoutDelimiter;
-            Byte = _byte;
-            Binary = binary;
-            Date = date;
-            DateTime = dateTime;
-            Password = password;
-            Callback = callback;
-        }
-
-        /// <summary>
         /// None
         /// </summary>
         /// <value>None</value>

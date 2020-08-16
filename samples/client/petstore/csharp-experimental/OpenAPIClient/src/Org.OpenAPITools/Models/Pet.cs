@@ -53,31 +53,6 @@ namespace Org.OpenAPITools.Models
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Pet" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected Pet() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Pet" /> class.
-        /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="category">category.</param>
-        /// <param name="name">name (required).</param>
-        /// <param name="photoUrls">photoUrls (required).</param>
-        /// <param name="tags">tags.</param>
-        /// <param name="status">pet status in the store.</param>
-        public Pet(long? id = default, Category? category = default, string name = default, IReadOnlyList<string> photoUrls = default, IReadOnlyList<Tag>? tags = default, StatusEnum? status = default)
-        {
-            Id = id;
-            Category = category;
-            Name = name;
-            PhotoUrls = photoUrls;
-            Tags = tags;
-            Status = status;
-        }
-
-        /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]

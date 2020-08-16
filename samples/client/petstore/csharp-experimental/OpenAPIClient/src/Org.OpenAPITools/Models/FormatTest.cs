@@ -26,49 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class FormatTest : IEquatable<FormatTest>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FormatTest" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected FormatTest() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FormatTest" /> class.
-        /// </summary>
-        /// <param name="integer">integer.</param>
-        /// <param name="int32">int32.</param>
-        /// <param name="int64">int64.</param>
-        /// <param name="number">number (required).</param>
-        /// <param name="_float">_float.</param>
-        /// <param name="_double">_double.</param>
-        /// <param name="_string">_string.</param>
-        /// <param name="_byte">_byte (required).</param>
-        /// <param name="binary">binary.</param>
-        /// <param name="date">date (required).</param>
-        /// <param name="dateTime">dateTime.</param>
-        /// <param name="uuid">uuid.</param>
-        /// <param name="password">password (required).</param>
-        /// <param name="patternWithDigits">A string that is a 10 digit number. Can have leading zeros..</param>
-        /// <param name="patternWithDigitsAndDelimiter">A string starting with &#39;image_&#39; (case insensitive) and one to three digits following i.e. Image_01..</param>
-        public FormatTest(int? integer = default, int? int32 = default, long? int64 = default, decimal number = default, float? _float = default, double? _double = default, string? _string = default, byte[] _byte = default, System.IO.Stream? binary = default, DateTime date = default, DateTime? dateTime = default, Guid? uuid = default, string password = default, string? patternWithDigits = default, string? patternWithDigitsAndDelimiter = default)
-        {
-            Integer = integer;
-            Int32 = int32;
-            Int64 = int64;
-            Number = number;
-            Float = _float;
-            Double = _double;
-            String = _string;
-            Byte = _byte;
-            Binary = binary;
-            Date = date;
-            DateTime = dateTime;
-            Uuid = uuid;
-            Password = password;
-            PatternWithDigits = patternWithDigits;
-            PatternWithDigitsAndDelimiter = patternWithDigitsAndDelimiter;
-        }
-
-        /// <summary>
         /// Gets or Sets Integer
         /// </summary>
         [JsonProperty("integer", NullValueHandling = NullValueHandling.Ignore)]

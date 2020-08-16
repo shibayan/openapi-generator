@@ -26,17 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class Tag : IEquatable<Tag>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Tag" /> class.
-        /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="name">name.</param>
-        public Tag(long? id = default, string? name = default)
-        {
-            Id = id;
-            Name = name;
-        }
-
-        /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]

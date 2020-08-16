@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class NumberOnly : IEquatable<NumberOnly>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NumberOnly" /> class.
-        /// </summary>
-        /// <param name="justNumber">justNumber.</param>
-        public NumberOnly(decimal? justNumber = default)
-        {
-            JustNumber = justNumber;
-        }
-
-        /// <summary>
         /// Gets or Sets JustNumber
         /// </summary>
         [JsonProperty("JustNumber", NullValueHandling = NullValueHandling.Ignore)]

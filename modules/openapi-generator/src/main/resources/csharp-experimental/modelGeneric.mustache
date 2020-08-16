@@ -26,36 +26,6 @@
         {{/complexType}}
         {{/isEnum}}
         {{/vars}}
-    {{#hasRequired}}
-    {{^hasOnlyReadOnly}}
-        /// <summary>
-        /// Initializes a new instance of the <see cref="{{classname}}" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected {{classname}}() { }
-
-    {{/hasOnlyReadOnly}}
-    {{/hasRequired}}
-        /// <summary>
-        /// Initializes a new instance of the <see cref="{{classname}}" /> class.
-        /// </summary>
-        {{#readWriteVars}}
-        /// <param name="{{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}}">{{#description}}{{description}}{{/description}}{{^description}}{{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}}{{/description}}{{#required}} (required){{/required}}{{#defaultValue}} (default to {{defaultValue}}){{/defaultValue}}.</param>
-        {{/readWriteVars}}
-    {{#hasOnlyReadOnly}}
-        [JsonConstructor]
-    {{/hasOnlyReadOnly}}
-        public {{classname}}({{#readWriteVars}}{{{datatypeWithEnum}}}{{^required}}?{{/required}} {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}}{{#defaultValue}} = {{{defaultValue}}}{{/defaultValue}}{{^defaultValue}} = default{{/defaultValue}}{{^-last}}, {{/-last}}{{/readWriteVars}}){{#parent}} : base({{#parentVars}}{{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}}{{#hasMore}}, {{/hasMore}}{{/parentVars}}){{/parent}}
-        {
-            {{#vars}}
-            {{^isInherited}}
-            {{^isReadOnly}}
-            {{name}} = {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}};
-            {{/isReadOnly}}
-            {{/isInherited}}
-            {{/vars}}
-        }
-
         {{#vars}}
         {{^isInherited}}
         /// <summary>

@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class InlineResponseDefault : IEquatable<InlineResponseDefault>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineResponseDefault" /> class.
-        /// </summary>
-        /// <param name="_string">_string.</param>
-        public InlineResponseDefault(Foo? _string = default)
-        {
-            String = _string;
-        }
-
-        /// <summary>
         /// Gets or Sets String
         /// </summary>
         [JsonProperty("string", NullValueHandling = NullValueHandling.Ignore)]

@@ -26,19 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class ApiResponse : IEquatable<ApiResponse>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiResponse" /> class.
-        /// </summary>
-        /// <param name="code">code.</param>
-        /// <param name="type">type.</param>
-        /// <param name="message">message.</param>
-        public ApiResponse(int? code = default, string? type = default, string? message = default)
-        {
-            Code = code;
-            Type = type;
-            Message = message;
-        }
-
-        /// <summary>
         /// Gets or Sets Code
         /// </summary>
         [JsonProperty("code", NullValueHandling = NullValueHandling.Ignore)]

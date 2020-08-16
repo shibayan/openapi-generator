@@ -26,17 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class AdditionalPropertiesClass : IEquatable<AdditionalPropertiesClass>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AdditionalPropertiesClass" /> class.
-        /// </summary>
-        /// <param name="mapProperty">mapProperty.</param>
-        /// <param name="mapOfMapProperty">mapOfMapProperty.</param>
-        public AdditionalPropertiesClass(IDictionary<string, string>? mapProperty = default, IDictionary<string, IDictionary<string, string>>? mapOfMapProperty = default)
-        {
-            MapProperty = mapProperty;
-            MapOfMapProperty = mapOfMapProperty;
-        }
-
-        /// <summary>
         /// Gets or Sets MapProperty
         /// </summary>
         [JsonProperty("map_property", NullValueHandling = NullValueHandling.Ignore)]

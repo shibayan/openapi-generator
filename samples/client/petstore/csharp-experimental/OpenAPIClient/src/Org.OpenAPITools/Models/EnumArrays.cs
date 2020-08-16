@@ -67,17 +67,6 @@ namespace Org.OpenAPITools.Models
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EnumArrays" /> class.
-        /// </summary>
-        /// <param name="justSymbol">justSymbol.</param>
-        /// <param name="arrayEnum">arrayEnum.</param>
-        public EnumArrays(JustSymbolEnum? justSymbol = default, IReadOnlyList<ArrayEnumEnum>? arrayEnum = default)
-        {
-            JustSymbol = justSymbol;
-            ArrayEnum = arrayEnum;
-        }
-
-        /// <summary>
         /// Gets or Sets JustSymbol
         /// </summary>
         [JsonProperty("just_symbol", NullValueHandling = NullValueHandling.Ignore)]

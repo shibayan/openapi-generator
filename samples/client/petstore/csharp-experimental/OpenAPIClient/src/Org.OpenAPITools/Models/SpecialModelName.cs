@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class SpecialModelName : IEquatable<SpecialModelName>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpecialModelName" /> class.
-        /// </summary>
-        /// <param name="specialPropertyName">specialPropertyName.</param>
-        public SpecialModelName(long? specialPropertyName = default)
-        {
-            SpecialPropertyName = specialPropertyName;
-        }
-
-        /// <summary>
         /// Gets or Sets SpecialPropertyName
         /// </summary>
         [JsonProperty("$special[property.name]", NullValueHandling = NullValueHandling.Ignore)]

@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class ClassModel : IEquatable<ClassModel>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClassModel" /> class.
-        /// </summary>
-        /// <param name="_class">_class.</param>
-        public ClassModel(string? _class = default)
-        {
-            Class = _class;
-        }
-
-        /// <summary>
         /// Gets or Sets Class
         /// </summary>
         [JsonProperty("_class", NullValueHandling = NullValueHandling.Ignore)]

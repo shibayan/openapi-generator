@@ -47,21 +47,6 @@ namespace Org.OpenAPITools.Models
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MapTest" /> class.
-        /// </summary>
-        /// <param name="mapMapOfString">mapMapOfString.</param>
-        /// <param name="mapOfEnumString">mapOfEnumString.</param>
-        /// <param name="directMap">directMap.</param>
-        /// <param name="indirectMap">indirectMap.</param>
-        public MapTest(IDictionary<string, IDictionary<string, string>>? mapMapOfString = default, IDictionary<string, InnerEnum>? mapOfEnumString = default, IDictionary<string, bool>? directMap = default, IDictionary<string, bool>? indirectMap = default)
-        {
-            MapMapOfString = mapMapOfString;
-            MapOfEnumString = mapOfEnumString;
-            DirectMap = directMap;
-            IndirectMap = indirectMap;
-        }
-
-        /// <summary>
         /// Gets or Sets MapMapOfString
         /// </summary>
         [JsonProperty("map_map_of_string", NullValueHandling = NullValueHandling.Ignore)]

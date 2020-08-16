@@ -32,23 +32,6 @@ namespace Org.OpenAPITools.Models
     public partial class Animal : IEquatable<Animal>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Animal" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected Animal() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Animal" /> class.
-        /// </summary>
-        /// <param name="className">className (required).</param>
-        /// <param name="color">color (default to &quot;red&quot;).</param>
-        public Animal(string className = default, string? color = "red")
-        {
-            ClassName = className;
-            Color = color;
-        }
-
-        /// <summary>
         /// Gets or Sets ClassName
         /// </summary>
         [Required]

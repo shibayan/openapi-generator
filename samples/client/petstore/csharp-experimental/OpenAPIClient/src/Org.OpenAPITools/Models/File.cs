@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class File : IEquatable<File>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="File" /> class.
-        /// </summary>
-        /// <param name="sourceURI">Test capitalization.</param>
-        public File(string? sourceURI = default)
-        {
-            SourceURI = sourceURI;
-        }
-
-        /// <summary>
         /// Test capitalization
         /// </summary>
         /// <value>Test capitalization</value>

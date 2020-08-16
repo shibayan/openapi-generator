@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class CatAllOf : IEquatable<CatAllOf>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CatAllOf" /> class.
-        /// </summary>
-        /// <param name="declawed">declawed.</param>
-        public CatAllOf(bool? declawed = default)
-        {
-            Declawed = declawed;
-        }
-
-        /// <summary>
         /// Gets or Sets Declawed
         /// </summary>
         [JsonProperty("declawed", NullValueHandling = NullValueHandling.Ignore)]

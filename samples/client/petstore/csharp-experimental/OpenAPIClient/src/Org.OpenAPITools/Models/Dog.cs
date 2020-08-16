@@ -26,23 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class Dog : Animal, IEquatable<Dog>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Dog" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected Dog() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Dog" /> class.
-        /// </summary>
-        /// <param name="breed">breed.</param>
-        /// <param name="className">className (required).</param>
-        /// <param name="color">color (default to &quot;red&quot;).</param>
-        public Dog(string? breed = default, string className = default, string? color = "red") : base(className, color)
-        {
-            Breed = breed;
-        }
-
-        /// <summary>
         /// Gets or Sets Breed
         /// </summary>
         [JsonProperty("breed", NullValueHandling = NullValueHandling.Ignore)]

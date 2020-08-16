@@ -26,23 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class Cat : Animal, IEquatable<Cat>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Cat" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected Cat() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Cat" /> class.
-        /// </summary>
-        /// <param name="declawed">declawed.</param>
-        /// <param name="className">className (required).</param>
-        /// <param name="color">color (default to &quot;red&quot;).</param>
-        public Cat(bool? declawed = default, string className = default, string? color = "red") : base(className, color)
-        {
-            Declawed = declawed;
-        }
-
-        /// <summary>
         /// Gets or Sets Declawed
         /// </summary>
         [JsonProperty("declawed", NullValueHandling = NullValueHandling.Ignore)]

@@ -26,29 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class User : IEquatable<User>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="User" /> class.
-        /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="username">username.</param>
-        /// <param name="firstName">firstName.</param>
-        /// <param name="lastName">lastName.</param>
-        /// <param name="email">email.</param>
-        /// <param name="password">password.</param>
-        /// <param name="phone">phone.</param>
-        /// <param name="userStatus">User Status.</param>
-        public User(long? id = default, string? username = default, string? firstName = default, string? lastName = default, string? email = default, string? password = default, string? phone = default, int? userStatus = default)
-        {
-            Id = id;
-            Username = username;
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            Password = password;
-            Phone = phone;
-            UserStatus = userStatus;
-        }
-
-        /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]

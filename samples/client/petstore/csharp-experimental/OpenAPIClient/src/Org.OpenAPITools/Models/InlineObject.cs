@@ -26,17 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class InlineObject : IEquatable<InlineObject>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineObject" /> class.
-        /// </summary>
-        /// <param name="name">Updated name of the pet.</param>
-        /// <param name="status">Updated status of the pet.</param>
-        public InlineObject(string? name = default, string? status = default)
-        {
-            Name = name;
-            Status = status;
-        }
-
-        /// <summary>
         /// Updated name of the pet
         /// </summary>
         /// <value>Updated name of the pet</value>

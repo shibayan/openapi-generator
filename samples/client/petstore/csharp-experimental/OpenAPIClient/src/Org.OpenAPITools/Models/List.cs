@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class List : IEquatable<List>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="List" /> class.
-        /// </summary>
-        /// <param name="_123list">_123list.</param>
-        public List(string? _123list = default)
-        {
-            _123List = _123list;
-        }
-
-        /// <summary>
         /// Gets or Sets _123List
         /// </summary>
         [JsonProperty("123-list", NullValueHandling = NullValueHandling.Ignore)]

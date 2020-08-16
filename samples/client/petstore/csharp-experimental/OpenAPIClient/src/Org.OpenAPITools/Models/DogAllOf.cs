@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class DogAllOf : IEquatable<DogAllOf>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DogAllOf" /> class.
-        /// </summary>
-        /// <param name="breed">breed.</param>
-        public DogAllOf(string? breed = default)
-        {
-            Breed = breed;
-        }
-
-        /// <summary>
         /// Gets or Sets Breed
         /// </summary>
         [JsonProperty("breed", NullValueHandling = NullValueHandling.Ignore)]

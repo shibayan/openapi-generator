@@ -26,17 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class InlineObject1 : IEquatable<InlineObject1>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineObject1" /> class.
-        /// </summary>
-        /// <param name="additionalMetadata">Additional data to pass to server.</param>
-        /// <param name="file">file to upload.</param>
-        public InlineObject1(string? additionalMetadata = default, System.IO.Stream? file = default)
-        {
-            AdditionalMetadata = additionalMetadata;
-            File = file;
-        }
-
-        /// <summary>
         /// Additional data to pass to server
         /// </summary>
         /// <value>Additional data to pass to server</value>

@@ -26,23 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class Name : IEquatable<Name>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Name" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected Name() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Name" /> class.
-        /// </summary>
-        /// <param name="name">name (required).</param>
-        /// <param name="property">property.</param>
-        public Name(int name = default, string? property = default)
-        {
-            _Name = name;
-            Property = property;
-        }
-
-        /// <summary>
         /// Gets or Sets _Name
         /// </summary>
         [Required]

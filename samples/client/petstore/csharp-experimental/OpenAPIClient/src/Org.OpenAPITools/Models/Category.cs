@@ -26,23 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class Category : IEquatable<Category>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Category" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected Category() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Category" /> class.
-        /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="name">name (required) (default to &quot;default-name&quot;).</param>
-        public Category(long? id = default, string name = "default-name")
-        {
-            Id = id;
-            Name = name;
-        }
-
-        /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]

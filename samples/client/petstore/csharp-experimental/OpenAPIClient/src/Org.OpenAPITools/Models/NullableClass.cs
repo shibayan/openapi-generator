@@ -26,37 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class NullableClass : Dictionary<string, object>, IEquatable<NullableClass>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NullableClass" /> class.
-        /// </summary>
-        /// <param name="integerProp">integerProp.</param>
-        /// <param name="numberProp">numberProp.</param>
-        /// <param name="booleanProp">booleanProp.</param>
-        /// <param name="stringProp">stringProp.</param>
-        /// <param name="dateProp">dateProp.</param>
-        /// <param name="datetimeProp">datetimeProp.</param>
-        /// <param name="arrayNullableProp">arrayNullableProp.</param>
-        /// <param name="arrayAndItemsNullableProp">arrayAndItemsNullableProp.</param>
-        /// <param name="arrayItemsNullable">arrayItemsNullable.</param>
-        /// <param name="objectNullableProp">objectNullableProp.</param>
-        /// <param name="objectAndItemsNullableProp">objectAndItemsNullableProp.</param>
-        /// <param name="objectItemsNullable">objectItemsNullable.</param>
-        public NullableClass(int? integerProp = default, decimal? numberProp = default, bool? booleanProp = default, string? stringProp = default, DateTime? dateProp = default, DateTime? datetimeProp = default, IReadOnlyList<object>? arrayNullableProp = default, IReadOnlyList<object>? arrayAndItemsNullableProp = default, IReadOnlyList<object>? arrayItemsNullable = default, IDictionary<string, object>? objectNullableProp = default, IDictionary<string, object>? objectAndItemsNullableProp = default, IDictionary<string, object>? objectItemsNullable = default) : base()
-        {
-            IntegerProp = integerProp;
-            NumberProp = numberProp;
-            BooleanProp = booleanProp;
-            StringProp = stringProp;
-            DateProp = dateProp;
-            DatetimeProp = datetimeProp;
-            ArrayNullableProp = arrayNullableProp;
-            ArrayAndItemsNullableProp = arrayAndItemsNullableProp;
-            ArrayItemsNullable = arrayItemsNullable;
-            ObjectNullableProp = objectNullableProp;
-            ObjectAndItemsNullableProp = objectAndItemsNullableProp;
-            ObjectItemsNullable = objectItemsNullable;
-        }
-
-        /// <summary>
         /// Gets or Sets IntegerProp
         /// </summary>
         [JsonProperty("integer_prop", NullValueHandling = NullValueHandling.Ignore)]

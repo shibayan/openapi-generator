@@ -26,19 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class ArrayTest : IEquatable<ArrayTest>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ArrayTest" /> class.
-        /// </summary>
-        /// <param name="arrayOfString">arrayOfString.</param>
-        /// <param name="arrayArrayOfInteger">arrayArrayOfInteger.</param>
-        /// <param name="arrayArrayOfModel">arrayArrayOfModel.</param>
-        public ArrayTest(IReadOnlyList<string>? arrayOfString = default, IReadOnlyList<IReadOnlyList<long>>? arrayArrayOfInteger = default, IReadOnlyList<IReadOnlyList<ReadOnlyFirst>>? arrayArrayOfModel = default)
-        {
-            ArrayOfString = arrayOfString;
-            ArrayArrayOfInteger = arrayArrayOfInteger;
-            ArrayArrayOfModel = arrayArrayOfModel;
-        }
-
-        /// <summary>
         /// Gets or Sets ArrayOfString
         /// </summary>
         [JsonProperty("array_of_string", NullValueHandling = NullValueHandling.Ignore)]

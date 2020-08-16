@@ -26,14 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class HasOnlyReadOnly : IEquatable<HasOnlyReadOnly>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HasOnlyReadOnly" /> class.
-        /// </summary>
-        [JsonConstructor]
-        public HasOnlyReadOnly()
-        {
-        }
-
-        /// <summary>
         /// Gets or Sets Bar
         /// </summary>
         [JsonProperty("bar", NullValueHandling = NullValueHandling.Ignore)]

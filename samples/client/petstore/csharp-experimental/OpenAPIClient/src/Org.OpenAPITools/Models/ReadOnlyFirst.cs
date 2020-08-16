@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class ReadOnlyFirst : IEquatable<ReadOnlyFirst>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReadOnlyFirst" /> class.
-        /// </summary>
-        /// <param name="baz">baz.</param>
-        public ReadOnlyFirst(string? baz = default)
-        {
-            Baz = baz;
-        }
-
-        /// <summary>
         /// Gets or Sets Bar
         /// </summary>
         [JsonProperty("bar", NullValueHandling = NullValueHandling.Ignore)]

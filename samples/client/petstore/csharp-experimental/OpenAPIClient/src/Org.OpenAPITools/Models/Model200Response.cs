@@ -26,17 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class Model200Response : IEquatable<Model200Response>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Model200Response" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="_class">_class.</param>
-        public Model200Response(int? name = default, string? _class = default)
-        {
-            Name = name;
-            Class = _class;
-        }
-
-        /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]

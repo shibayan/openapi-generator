@@ -115,35 +115,6 @@ namespace Org.OpenAPITools.Models
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EnumTest" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected EnumTest() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EnumTest" /> class.
-        /// </summary>
-        /// <param name="enumString">enumString.</param>
-        /// <param name="enumStringRequired">enumStringRequired (required).</param>
-        /// <param name="enumInteger">enumInteger.</param>
-        /// <param name="enumNumber">enumNumber.</param>
-        /// <param name="outerEnum">outerEnum.</param>
-        /// <param name="outerEnumInteger">outerEnumInteger.</param>
-        /// <param name="outerEnumDefaultValue">outerEnumDefaultValue.</param>
-        /// <param name="outerEnumIntegerDefaultValue">outerEnumIntegerDefaultValue.</param>
-        public EnumTest(EnumStringEnum? enumString = default, EnumStringRequiredEnum enumStringRequired = default, EnumIntegerEnum? enumInteger = default, EnumNumberEnum? enumNumber = default, OuterEnum? outerEnum = default, OuterEnumInteger? outerEnumInteger = default, OuterEnumDefaultValue? outerEnumDefaultValue = default, OuterEnumIntegerDefaultValue? outerEnumIntegerDefaultValue = default)
-        {
-            EnumString = enumString;
-            EnumStringRequired = enumStringRequired;
-            EnumInteger = enumInteger;
-            EnumNumber = enumNumber;
-            OuterEnum = outerEnum;
-            OuterEnumInteger = outerEnumInteger;
-            OuterEnumDefaultValue = outerEnumDefaultValue;
-            OuterEnumIntegerDefaultValue = outerEnumIntegerDefaultValue;
-        }
-
-        /// <summary>
         /// Gets or Sets EnumString
         /// </summary>
         [JsonProperty("enum_string", NullValueHandling = NullValueHandling.Ignore)]

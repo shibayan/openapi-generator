@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class HealthCheckResult : IEquatable<HealthCheckResult>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HealthCheckResult" /> class.
-        /// </summary>
-        /// <param name="nullableMessage">nullableMessage.</param>
-        public HealthCheckResult(string? nullableMessage = default)
-        {
-            NullableMessage = nullableMessage;
-        }
-
-        /// <summary>
         /// Gets or Sets NullableMessage
         /// </summary>
         [JsonProperty("NullableMessage", NullValueHandling = NullValueHandling.Ignore)]

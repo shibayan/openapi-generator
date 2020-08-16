@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class Foo : IEquatable<Foo>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Foo" /> class.
-        /// </summary>
-        /// <param name="bar">bar (default to &quot;bar&quot;).</param>
-        public Foo(string? bar = "bar")
-        {
-            Bar = bar;
-        }
-
-        /// <summary>
         /// Gets or Sets Bar
         /// </summary>
         [JsonProperty("bar", NullValueHandling = NullValueHandling.Ignore)]

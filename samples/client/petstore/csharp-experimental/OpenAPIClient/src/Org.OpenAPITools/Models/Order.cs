@@ -53,25 +53,6 @@ namespace Org.OpenAPITools.Models
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Order" /> class.
-        /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="petId">petId.</param>
-        /// <param name="quantity">quantity.</param>
-        /// <param name="shipDate">shipDate.</param>
-        /// <param name="status">Order Status.</param>
-        /// <param name="complete">complete (default to false).</param>
-        public Order(long? id = default, long? petId = default, int? quantity = default, DateTime? shipDate = default, StatusEnum? status = default, bool? complete = false)
-        {
-            Id = id;
-            PetId = petId;
-            Quantity = quantity;
-            ShipDate = shipDate;
-            Status = status;
-            Complete = complete;
-        }
-
-        /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]

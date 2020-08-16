@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class Return : IEquatable<Return>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Return" /> class.
-        /// </summary>
-        /// <param name="_return">_return.</param>
-        public Return(int? _return = default)
-        {
-            _Return = _return;
-        }
-
-        /// <summary>
         /// Gets or Sets _Return
         /// </summary>
         [JsonProperty("return", NullValueHandling = NullValueHandling.Ignore)]

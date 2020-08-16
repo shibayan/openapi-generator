@@ -26,23 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class InlineObject5 : IEquatable<InlineObject5>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineObject5" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected InlineObject5() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InlineObject5" /> class.
-        /// </summary>
-        /// <param name="additionalMetadata">Additional data to pass to server.</param>
-        /// <param name="requiredFile">file to upload (required).</param>
-        public InlineObject5(string? additionalMetadata = default, System.IO.Stream requiredFile = default)
-        {
-            AdditionalMetadata = additionalMetadata;
-            RequiredFile = requiredFile;
-        }
-
-        /// <summary>
         /// Additional data to pass to server
         /// </summary>
         /// <value>Additional data to pass to server</value>

@@ -60,8 +60,6 @@ public class CSharpClientExperimentalCodegen extends AbstractCSharpExperimentalC
     protected boolean validatable = Boolean.TRUE;
     protected Map<Character, String> regexModifiers;
 
-    protected boolean caseInsensitiveResponseHeaders = Boolean.FALSE;
-
     public CSharpClientExperimentalCodegen() {
         super();
 
@@ -166,10 +164,6 @@ public class CSharpClientExperimentalCodegen extends AbstractCSharpExperimentalC
         addSwitch(CodegenConstants.VALIDATABLE,
                 CodegenConstants.VALIDATABLE_DESC,
                 this.validatable);
-
-        addSwitch(CodegenConstants.CASE_INSENSITIVE_RESPONSE_HEADERS,
-                CodegenConstants.CASE_INSENSITIVE_RESPONSE_HEADERS_DESC,
-                this.caseInsensitiveResponseHeaders);
 
         regexModifiers = new HashMap<>();
         regexModifiers.put('i', "IgnoreCase");
@@ -309,33 +303,35 @@ public class CSharpClientExperimentalCodegen extends AbstractCSharpExperimentalC
      * See https://msdn.microsoft.com/en-us/library/yd1hzczs(v=vs.110).aspx for .NET options.
      */
     public void postProcessPattern(String pattern, Map<String, Object> vendorExtensions) {
-        if (pattern != null) {
-            int i = pattern.lastIndexOf('/');
-
-            //Must follow Perl /pattern/modifiers convention
-            if (pattern.charAt(0) != '/' || i < 2) {
-                throw new IllegalArgumentException("Pattern must follow the Perl "
-                        + "/pattern/modifiers convention. " + pattern + " is not valid.");
-            }
-
-            String regex = pattern.substring(1, i).replace("'", "\'");
-            List<String> modifiers = new ArrayList<String>();
-
-            // perl requires an explicit modifier to be culture specific and .NET is the reverse.
-            modifiers.add("CultureInvariant");
-
-            for (char c : pattern.substring(i).toCharArray()) {
-                if (regexModifiers.containsKey(c)) {
-                    String modifier = regexModifiers.get(c);
-                    modifiers.add(modifier);
-                } else if (c == 'l') {
-                    modifiers.remove("CultureInvariant");
-                }
-            }
-
-            vendorExtensions.put("x-regex", regex);
-            vendorExtensions.put("x-modifiers", modifiers);
+        if (pattern == null) {
+            return;
         }
+
+        int i = pattern.lastIndexOf('/');
+
+        //Must follow Perl /pattern/modifiers convention
+        if (pattern.charAt(0) != '/' || i < 2) {
+            throw new IllegalArgumentException("Pattern must follow the Perl "
+                    + "/pattern/modifiers convention. " + pattern + " is not valid.");
+        }
+
+        String regex = pattern.substring(1, i).replace("'", "\'");
+        List<String> modifiers = new ArrayList<String>();
+
+        // perl requires an explicit modifier to be culture specific and .NET is the reverse.
+        modifiers.add("CultureInvariant");
+
+        for (char c : pattern.substring(i).toCharArray()) {
+            if (regexModifiers.containsKey(c)) {
+                String modifier = regexModifiers.get(c);
+                modifiers.add(modifier);
+            } else if (c == 'l') {
+                modifiers.remove("CultureInvariant");
+            }
+        }
+
+        vendorExtensions.put("x-regex", regex);
+        vendorExtensions.put("x-modifiers", modifiers);
     }
 
     @Override
@@ -451,10 +447,6 @@ public class CSharpClientExperimentalCodegen extends AbstractCSharpExperimentalC
 
     public void setValidatable(boolean validatable) {
         this.validatable = validatable;
-    }
-
-    public void setCaseInsensitiveResponseHeaders(final Boolean caseInsensitiveResponseHeaders) {
-        this.caseInsensitiveResponseHeaders = caseInsensitiveResponseHeaders;
     }
 
     @Override

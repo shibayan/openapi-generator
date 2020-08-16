@@ -26,19 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class OuterComposite : IEquatable<OuterComposite>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OuterComposite" /> class.
-        /// </summary>
-        /// <param name="myNumber">myNumber.</param>
-        /// <param name="myString">myString.</param>
-        /// <param name="myBoolean">myBoolean.</param>
-        public OuterComposite(decimal? myNumber = default, string? myString = default, bool? myBoolean = default)
-        {
-            MyNumber = myNumber;
-            MyString = myString;
-            MyBoolean = myBoolean;
-        }
-
-        /// <summary>
         /// Gets or Sets MyNumber
         /// </summary>
         [JsonProperty("my_number", NullValueHandling = NullValueHandling.Ignore)]

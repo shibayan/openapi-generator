@@ -26,25 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class Capitalization : IEquatable<Capitalization>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Capitalization" /> class.
-        /// </summary>
-        /// <param name="smallCamel">smallCamel.</param>
-        /// <param name="capitalCamel">capitalCamel.</param>
-        /// <param name="smallSnake">smallSnake.</param>
-        /// <param name="capitalSnake">capitalSnake.</param>
-        /// <param name="sCAETHFlowPoints">sCAETHFlowPoints.</param>
-        /// <param name="aTTNAME">Name of the pet .</param>
-        public Capitalization(string? smallCamel = default, string? capitalCamel = default, string? smallSnake = default, string? capitalSnake = default, string? sCAETHFlowPoints = default, string? aTTNAME = default)
-        {
-            SmallCamel = smallCamel;
-            CapitalCamel = capitalCamel;
-            SmallSnake = smallSnake;
-            CapitalSnake = capitalSnake;
-            SCAETHFlowPoints = sCAETHFlowPoints;
-            ATT_NAME = aTTNAME;
-        }
-
-        /// <summary>
         /// Gets or Sets SmallCamel
         /// </summary>
         [JsonProperty("smallCamel", NullValueHandling = NullValueHandling.Ignore)]

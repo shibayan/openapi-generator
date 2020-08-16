@@ -74,17 +74,6 @@ namespace Org.OpenAPITools.Models
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineObject2" /> class.
-        /// </summary>
-        /// <param name="enumFormStringArray">Form parameter enum test (string array).</param>
-        /// <param name="enumFormString">Form parameter enum test (string) (default to EnumFormStringEnum.Efg).</param>
-        public InlineObject2(IReadOnlyList<EnumFormStringArrayEnum>? enumFormStringArray = default, EnumFormStringEnum? enumFormString = EnumFormStringEnum.Efg)
-        {
-            EnumFormStringArray = enumFormStringArray;
-            EnumFormString = enumFormString;
-        }
-
-        /// <summary>
         /// Form parameter enum test (string array)
         /// </summary>
         /// <value>Form parameter enum test (string array)</value>

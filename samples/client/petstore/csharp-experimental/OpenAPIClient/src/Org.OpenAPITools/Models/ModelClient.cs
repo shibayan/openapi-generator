@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class ModelClient : IEquatable<ModelClient>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModelClient" /> class.
-        /// </summary>
-        /// <param name="_client">_client.</param>
-        public ModelClient(string? _client = default)
-        {
-            __Client = _client;
-        }
-
-        /// <summary>
         /// Gets or Sets __Client
         /// </summary>
         [JsonProperty("client", NullValueHandling = NullValueHandling.Ignore)]

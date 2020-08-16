@@ -26,19 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class MixedPropertiesAndAdditionalPropertiesClass : IEquatable<MixedPropertiesAndAdditionalPropertiesClass>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MixedPropertiesAndAdditionalPropertiesClass" /> class.
-        /// </summary>
-        /// <param name="uuid">uuid.</param>
-        /// <param name="dateTime">dateTime.</param>
-        /// <param name="map">map.</param>
-        public MixedPropertiesAndAdditionalPropertiesClass(Guid? uuid = default, DateTime? dateTime = default, IDictionary<string, Animal>? map = default)
-        {
-            Uuid = uuid;
-            DateTime = dateTime;
-            Map = map;
-        }
-
-        /// <summary>
         /// Gets or Sets Uuid
         /// </summary>
         [JsonProperty("uuid", NullValueHandling = NullValueHandling.Ignore)]

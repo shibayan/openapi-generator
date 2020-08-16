@@ -26,23 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class InlineObject4 : IEquatable<InlineObject4>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InlineObject4" /> class.
-        /// </summary>
-        [JsonConstructor]
-        protected InlineObject4() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InlineObject4" /> class.
-        /// </summary>
-        /// <param name="param">field1 (required).</param>
-        /// <param name="param2">field2 (required).</param>
-        public InlineObject4(string param = default, string param2 = default)
-        {
-            Param = param;
-            Param2 = param2;
-        }
-
-        /// <summary>
         /// field1
         /// </summary>
         /// <value>field1</value>

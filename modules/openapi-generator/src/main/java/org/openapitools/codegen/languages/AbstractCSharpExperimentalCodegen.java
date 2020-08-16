@@ -122,38 +122,22 @@ public abstract class AbstractCSharpExperimentalCodegen extends DefaultCodegen i
         // TODO: Either include fully qualified names here or handle in DefaultCodegen via lastIndexOf(".") search
         languageSpecificPrimitives = new HashSet<String>(
                 Arrays.asList(
-                        "String",
                         "string",
-                        "bool?",
                         "bool",
-                        "double?",
                         "double",
-                        "decimal?",
                         "decimal",
-                        "int?",
                         "int",
-                        "long?",
                         "long",
-                        "float?",
                         "float",
                         "byte[]",
                         "ICollection",
                         "Collection",
                         "List",
                         "Dictionary",
-                        "DateTime?",
                         "DateTime",
-                        "DateTimeOffset?",
                         "DateTimeOffset",
-                        "Boolean",
-                        "Double",
-                        "Int32",
-                        "Int64",
-                        "Float",
-                        "Guid?",
                         "Guid",
                         "System.IO.Stream", // not really a primitive, we include it to avoid model import
-                        "Object",
                         "object")
         );
 
@@ -161,7 +145,6 @@ public abstract class AbstractCSharpExperimentalCodegen extends DefaultCodegen i
         instantiationTypes.put("list", "List");
         instantiationTypes.put("map", "Dictionary");
 
-        // Nullable types here assume C# 2 support is not part of base
         typeMapping = new HashMap<String, String>();
         typeMapping.put("string", "string");
         typeMapping.put("binary", "byte[]");

@@ -26,15 +26,6 @@ namespace Org.OpenAPITools.Models
     public partial class ArrayOfArrayOfNumberOnly : IEquatable<ArrayOfArrayOfNumberOnly>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ArrayOfArrayOfNumberOnly" /> class.
-        /// </summary>
-        /// <param name="arrayArrayNumber">arrayArrayNumber.</param>
-        public ArrayOfArrayOfNumberOnly(IReadOnlyList<IReadOnlyList<decimal>>? arrayArrayNumber = default)
-        {
-            ArrayArrayNumber = arrayArrayNumber;
-        }
-
-        /// <summary>
         /// Gets or Sets ArrayArrayNumber
         /// </summary>
         [JsonProperty("ArrayArrayNumber", NullValueHandling = NullValueHandling.Ignore)]

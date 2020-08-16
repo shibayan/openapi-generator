@@ -83,8 +83,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ModelClient</returns>
         public ModelClient Call123TestSpecialTags(ModelClient modelClient)
         {
-            var localVarResponse = Call123TestSpecialTagsWithHttpInfo(modelClient);
-            return localVarResponse.Data;
+            return Call123TestSpecialTagsAsync(modelClient).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -95,32 +94,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of ModelClient</returns>
         public Org.OpenAPITools.Client.ApiResponse<ModelClient> Call123TestSpecialTagsWithHttpInfo(ModelClient modelClient)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = modelClient;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<ModelClient>("/another-fake/dummy", localVarRequestOptions);
-
-            return localVarResponse;
+            return Call123TestSpecialTagsWithHttpInfoAsync(modelClient).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -131,7 +105,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of ModelClient</returns>
         public async System.Threading.Tasks.Task<ModelClient> Call123TestSpecialTagsAsync(ModelClient modelClient)
         {
-            var localVarResponse = await Call123TestSpecialTagsWithHttpInfoAsync(modelClient);
+            var localVarResponse = await Call123TestSpecialTagsWithHttpInfoAsync(modelClient).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -167,7 +141,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PatchAsync<ModelClient>("/another-fake/dummy", localVarRequestOptions);
+            var localVarResponse = await this.Client.PatchAsync<ModelClient>("/another-fake/dummy", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }

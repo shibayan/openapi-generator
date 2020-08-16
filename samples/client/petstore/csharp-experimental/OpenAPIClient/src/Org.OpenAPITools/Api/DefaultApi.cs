@@ -82,8 +82,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>InlineResponseDefault</returns>
         public InlineResponseDefault FooGet()
         {
-            var localVarResponse = FooGetWithHttpInfo();
-            return localVarResponse.Data;
+            return FooGetAsync().GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -93,30 +92,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of InlineResponseDefault</returns>
         public Org.OpenAPITools.Client.ApiResponse<InlineResponseDefault> FooGetWithHttpInfo()
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<InlineResponseDefault>("/foo", localVarRequestOptions);
-
-            return localVarResponse;
+            return FooGetWithHttpInfoAsync().GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -126,7 +102,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of InlineResponseDefault</returns>
         public async System.Threading.Tasks.Task<InlineResponseDefault> FooGetAsync()
         {
-            var localVarResponse = await FooGetWithHttpInfoAsync();
+            var localVarResponse = await FooGetWithHttpInfoAsync().ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -159,7 +135,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.GetAsync<InlineResponseDefault>("/foo", localVarRequestOptions);
+            var localVarResponse = await this.Client.GetAsync<InlineResponseDefault>("/foo", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }

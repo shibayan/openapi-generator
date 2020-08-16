@@ -83,7 +83,7 @@ namespace Org.OpenAPITools.Api
         /// <returns></returns>
         public void DeleteOrder(string orderId)
         {
-            DeleteOrderWithHttpInfo(orderId);
+            DeleteOrderAsync(orderId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -94,30 +94,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of object(void)</returns>
         public Org.OpenAPITools.Client.ApiResponse<object> DeleteOrderWithHttpInfo(string orderId)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("order_id", Org.OpenAPITools.Client.ClientUtils.ParameterToString(orderId, this.Configuration)); // path parameter
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<object>("/store/order/{order_id}", localVarRequestOptions);
-
-            return localVarResponse;
+            return DeleteOrderWithHttpInfoAsync(orderId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -128,7 +105,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task DeleteOrderAsync(string orderId)
         {
-            await DeleteOrderWithHttpInfoAsync(orderId);
+            await DeleteOrderWithHttpInfoAsync(orderId).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -161,7 +138,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.DeleteAsync<object>("/store/order/{order_id}", localVarRequestOptions);
+            var localVarResponse = await this.Client.DeleteAsync<object>("/store/order/{order_id}", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -173,8 +150,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>IDictionary&lt;string, int&gt;</returns>
         public IDictionary<string, int> GetInventory()
         {
-            var localVarResponse = GetInventoryWithHttpInfo();
-            return localVarResponse.Data;
+            return GetInventoryAsync().GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -184,35 +160,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of IDictionary&lt;string, int&gt;</returns>
         public Org.OpenAPITools.Client.ApiResponse<IDictionary<string, int>> GetInventoryWithHttpInfo()
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api_key")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("api_key", this.Configuration.GetApiKeyWithPrefix("api_key"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<IDictionary<string, int>>("/store/inventory", localVarRequestOptions);
-
-            return localVarResponse;
+            return GetInventoryWithHttpInfoAsync().GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -222,7 +170,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of IDictionary&lt;string, int&gt;</returns>
         public async System.Threading.Tasks.Task<IDictionary<string, int>> GetInventoryAsync()
         {
-            var localVarResponse = await GetInventoryWithHttpInfoAsync();
+            var localVarResponse = await GetInventoryWithHttpInfoAsync().ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -260,7 +208,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.GetAsync<IDictionary<string, int>>("/store/inventory", localVarRequestOptions);
+            var localVarResponse = await this.Client.GetAsync<IDictionary<string, int>>("/store/inventory", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -273,8 +221,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Order</returns>
         public Order GetOrderById(long orderId)
         {
-            var localVarResponse = GetOrderByIdWithHttpInfo(orderId);
-            return localVarResponse.Data;
+            return GetOrderByIdAsync(orderId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -285,32 +232,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of Order</returns>
         public Org.OpenAPITools.Client.ApiResponse<Order> GetOrderByIdWithHttpInfo(long orderId)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/xml",
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("order_id", Org.OpenAPITools.Client.ClientUtils.ParameterToString(orderId, this.Configuration)); // path parameter
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Order>("/store/order/{order_id}", localVarRequestOptions);
-
-            return localVarResponse;
+            return GetOrderByIdWithHttpInfoAsync(orderId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -321,7 +243,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of Order</returns>
         public async System.Threading.Tasks.Task<Order> GetOrderByIdAsync(long orderId)
         {
-            var localVarResponse = await GetOrderByIdWithHttpInfoAsync(orderId);
+            var localVarResponse = await GetOrderByIdWithHttpInfoAsync(orderId).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -357,7 +279,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.GetAsync<Order>("/store/order/{order_id}", localVarRequestOptions);
+            var localVarResponse = await this.Client.GetAsync<Order>("/store/order/{order_id}", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -370,8 +292,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Order</returns>
         public Order PlaceOrder(Order order)
         {
-            var localVarResponse = PlaceOrderWithHttpInfo(order);
-            return localVarResponse.Data;
+            return PlaceOrderAsync(order).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -382,33 +303,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of Order</returns>
         public Org.OpenAPITools.Client.ApiResponse<Order> PlaceOrderWithHttpInfo(Order order)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/xml",
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = order;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Order>("/store/order", localVarRequestOptions);
-
-            return localVarResponse;
+            return PlaceOrderWithHttpInfoAsync(order).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -419,7 +314,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of Order</returns>
         public async System.Threading.Tasks.Task<Order> PlaceOrderAsync(Order order)
         {
-            var localVarResponse = await PlaceOrderWithHttpInfoAsync(order);
+            var localVarResponse = await PlaceOrderWithHttpInfoAsync(order).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -456,7 +351,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PostAsync<Order>("/store/order", localVarRequestOptions);
+            var localVarResponse = await this.Client.PostAsync<Order>("/store/order", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }

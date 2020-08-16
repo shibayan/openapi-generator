@@ -83,7 +83,7 @@ namespace Org.OpenAPITools.Api
         /// <returns></returns>
         public void CreateUser(User user)
         {
-            CreateUserWithHttpInfo(user);
+            CreateUserAsync(user).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -94,31 +94,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of object(void)</returns>
         public Org.OpenAPITools.Client.ApiResponse<object> CreateUserWithHttpInfo(User user)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = user;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<object>("/user", localVarRequestOptions);
-
-            return localVarResponse;
+            return CreateUserWithHttpInfoAsync(user).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -129,7 +105,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task CreateUserAsync(User user)
         {
-            await CreateUserWithHttpInfoAsync(user);
+            await CreateUserWithHttpInfoAsync(user).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -163,7 +139,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PostAsync<object>("/user", localVarRequestOptions);
+            var localVarResponse = await this.Client.PostAsync<object>("/user", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -176,7 +152,7 @@ namespace Org.OpenAPITools.Api
         /// <returns></returns>
         public void CreateUsersWithArrayInput(IReadOnlyList<User> user)
         {
-            CreateUsersWithArrayInputWithHttpInfo(user);
+            CreateUsersWithArrayInputAsync(user).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -187,31 +163,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of object(void)</returns>
         public Org.OpenAPITools.Client.ApiResponse<object> CreateUsersWithArrayInputWithHttpInfo(IReadOnlyList<User> user)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = user;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<object>("/user/createWithArray", localVarRequestOptions);
-
-            return localVarResponse;
+            return CreateUsersWithArrayInputWithHttpInfoAsync(user).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -222,7 +174,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task CreateUsersWithArrayInputAsync(IReadOnlyList<User> user)
         {
-            await CreateUsersWithArrayInputWithHttpInfoAsync(user);
+            await CreateUsersWithArrayInputWithHttpInfoAsync(user).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -256,7 +208,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PostAsync<object>("/user/createWithArray", localVarRequestOptions);
+            var localVarResponse = await this.Client.PostAsync<object>("/user/createWithArray", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -269,7 +221,7 @@ namespace Org.OpenAPITools.Api
         /// <returns></returns>
         public void CreateUsersWithListInput(IReadOnlyList<User> user)
         {
-            CreateUsersWithListInputWithHttpInfo(user);
+            CreateUsersWithListInputAsync(user).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -280,31 +232,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of object(void)</returns>
         public Org.OpenAPITools.Client.ApiResponse<object> CreateUsersWithListInputWithHttpInfo(IReadOnlyList<User> user)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = user;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<object>("/user/createWithList", localVarRequestOptions);
-
-            return localVarResponse;
+            return CreateUsersWithListInputWithHttpInfoAsync(user).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -315,7 +243,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task CreateUsersWithListInputAsync(IReadOnlyList<User> user)
         {
-            await CreateUsersWithListInputWithHttpInfoAsync(user);
+            await CreateUsersWithListInputWithHttpInfoAsync(user).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -349,7 +277,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PostAsync<object>("/user/createWithList", localVarRequestOptions);
+            var localVarResponse = await this.Client.PostAsync<object>("/user/createWithList", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -362,7 +290,7 @@ namespace Org.OpenAPITools.Api
         /// <returns></returns>
         public void DeleteUser(string username)
         {
-            DeleteUserWithHttpInfo(username);
+            DeleteUserAsync(username).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -373,30 +301,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of object(void)</returns>
         public Org.OpenAPITools.Client.ApiResponse<object> DeleteUserWithHttpInfo(string username)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("username", Org.OpenAPITools.Client.ClientUtils.ParameterToString(username, this.Configuration)); // path parameter
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<object>("/user/{username}", localVarRequestOptions);
-
-            return localVarResponse;
+            return DeleteUserWithHttpInfoAsync(username).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -407,7 +312,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task DeleteUserAsync(string username)
         {
-            await DeleteUserWithHttpInfoAsync(username);
+            await DeleteUserWithHttpInfoAsync(username).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -440,7 +345,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.DeleteAsync<object>("/user/{username}", localVarRequestOptions);
+            var localVarResponse = await this.Client.DeleteAsync<object>("/user/{username}", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -453,8 +358,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>User</returns>
         public User GetUserByName(string username)
         {
-            var localVarResponse = GetUserByNameWithHttpInfo(username);
-            return localVarResponse.Data;
+            return GetUserByNameAsync(username).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -465,32 +369,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of User</returns>
         public Org.OpenAPITools.Client.ApiResponse<User> GetUserByNameWithHttpInfo(string username)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/xml",
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("username", Org.OpenAPITools.Client.ClientUtils.ParameterToString(username, this.Configuration)); // path parameter
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<User>("/user/{username}", localVarRequestOptions);
-
-            return localVarResponse;
+            return GetUserByNameWithHttpInfoAsync(username).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -501,7 +380,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of User</returns>
         public async System.Threading.Tasks.Task<User> GetUserByNameAsync(string username)
         {
-            var localVarResponse = await GetUserByNameWithHttpInfoAsync(username);
+            var localVarResponse = await GetUserByNameWithHttpInfoAsync(username).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -537,7 +416,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.GetAsync<User>("/user/{username}", localVarRequestOptions);
+            var localVarResponse = await this.Client.GetAsync<User>("/user/{username}", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -551,8 +430,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>string</returns>
         public string LoginUser(string username, string password)
         {
-            var localVarResponse = LoginUserWithHttpInfo(username, password);
-            return localVarResponse.Data;
+            return LoginUserAsync(username, password).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -564,33 +442,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of string</returns>
         public Org.OpenAPITools.Client.ApiResponse<string> LoginUserWithHttpInfo(string username, string password)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/xml",
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "username", username, this.Configuration));
-            localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "password", password, this.Configuration));
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<string>("/user/login", localVarRequestOptions);
-
-            return localVarResponse;
+            return LoginUserWithHttpInfoAsync(username, password).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -602,7 +454,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of string</returns>
         public async System.Threading.Tasks.Task<string> LoginUserAsync(string username, string password)
         {
-            var localVarResponse = await LoginUserWithHttpInfoAsync(username, password);
+            var localVarResponse = await LoginUserWithHttpInfoAsync(username, password).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -640,7 +492,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.GetAsync<string>("/user/login", localVarRequestOptions);
+            var localVarResponse = await this.Client.GetAsync<string>("/user/login", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -652,7 +504,7 @@ namespace Org.OpenAPITools.Api
         /// <returns></returns>
         public void LogoutUser()
         {
-            LogoutUserWithHttpInfo();
+            LogoutUserAsync().GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -662,29 +514,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of object(void)</returns>
         public Org.OpenAPITools.Client.ApiResponse<object> LogoutUserWithHttpInfo()
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<object>("/user/logout", localVarRequestOptions);
-
-            return localVarResponse;
+            return LogoutUserWithHttpInfoAsync().GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -694,7 +524,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task LogoutUserAsync()
         {
-            await LogoutUserWithHttpInfoAsync();
+            await LogoutUserWithHttpInfoAsync().ConfigureAwait(false);
         }
 
         /// <summary>
@@ -725,7 +555,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.GetAsync<object>("/user/logout", localVarRequestOptions);
+            var localVarResponse = await this.Client.GetAsync<object>("/user/logout", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -739,7 +569,7 @@ namespace Org.OpenAPITools.Api
         /// <returns></returns>
         public void UpdateUser(string username, User user)
         {
-            UpdateUserWithHttpInfo(username, user);
+            UpdateUserAsync(username, user).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -751,32 +581,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of object(void)</returns>
         public Org.OpenAPITools.Client.ApiResponse<object> UpdateUserWithHttpInfo(string username, User user)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("username", Org.OpenAPITools.Client.ClientUtils.ParameterToString(username, this.Configuration)); // path parameter
-            localVarRequestOptions.Data = user;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<object>("/user/{username}", localVarRequestOptions);
-
-            return localVarResponse;
+            return UpdateUserWithHttpInfoAsync(username, user).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -788,7 +593,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task UpdateUserAsync(string username, User user)
         {
-            await UpdateUserWithHttpInfoAsync(username, user);
+            await UpdateUserWithHttpInfoAsync(username, user).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -824,7 +629,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PutAsync<object>("/user/{username}", localVarRequestOptions);
+            var localVarResponse = await this.Client.PutAsync<object>("/user/{username}", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }

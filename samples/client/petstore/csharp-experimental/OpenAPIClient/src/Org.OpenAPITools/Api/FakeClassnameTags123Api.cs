@@ -83,8 +83,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ModelClient</returns>
         public ModelClient TestClassname(ModelClient modelClient)
         {
-            var localVarResponse = TestClassnameWithHttpInfo(modelClient);
-            return localVarResponse.Data;
+            return TestClassnameAsync(modelClient).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -95,37 +94,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of ModelClient</returns>
         public Org.OpenAPITools.Client.ApiResponse<ModelClient> TestClassnameWithHttpInfo(ModelClient modelClient)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = modelClient;
-
-            // authentication (api_key_query) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api_key_query")))
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "api_key_query", this.Configuration.GetApiKeyWithPrefix("api_key_query"), this.Configuration));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<ModelClient>("/fake_classname_test", localVarRequestOptions);
-
-            return localVarResponse;
+            return TestClassnameWithHttpInfoAsync(modelClient).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -136,7 +105,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of ModelClient</returns>
         public async System.Threading.Tasks.Task<ModelClient> TestClassnameAsync(ModelClient modelClient)
         {
-            var localVarResponse = await TestClassnameWithHttpInfoAsync(modelClient);
+            var localVarResponse = await TestClassnameWithHttpInfoAsync(modelClient).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -177,7 +146,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PatchAsync<ModelClient>("/fake_classname_test", localVarRequestOptions);
+            var localVarResponse = await this.Client.PatchAsync<ModelClient>("/fake_classname_test", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }

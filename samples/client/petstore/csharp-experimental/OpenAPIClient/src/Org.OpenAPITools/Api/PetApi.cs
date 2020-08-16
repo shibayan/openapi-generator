@@ -83,7 +83,7 @@ namespace Org.OpenAPITools.Api
         /// <returns></returns>
         public void AddPet(Pet pet)
         {
-            AddPetWithHttpInfo(pet);
+            AddPetAsync(pet).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -94,38 +94,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of object(void)</returns>
         public Org.OpenAPITools.Client.ApiResponse<object> AddPetWithHttpInfo(Pet pet)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "application/json",
-                "application/xml"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = pet;
-
-            // authentication (petstore_auth) required
-            // oauth required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<object>("/pet", localVarRequestOptions);
-
-            return localVarResponse;
+            return AddPetWithHttpInfoAsync(pet).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -136,7 +105,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task AddPetAsync(Pet pet)
         {
-            await AddPetWithHttpInfoAsync(pet);
+            await AddPetWithHttpInfoAsync(pet).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -177,7 +146,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PostAsync<object>("/pet", localVarRequestOptions);
+            var localVarResponse = await this.Client.PostAsync<object>("/pet", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -191,7 +160,7 @@ namespace Org.OpenAPITools.Api
         /// <returns></returns>
         public void DeletePet(long petId, string? apiKey = null)
         {
-            DeletePetWithHttpInfo(petId, apiKey);
+            DeletePetAsync(petId, apiKey).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -203,40 +172,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of object(void)</returns>
         public Org.OpenAPITools.Client.ApiResponse<object> DeletePetWithHttpInfo(long petId, string? apiKey = null)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("petId", Org.OpenAPITools.Client.ClientUtils.ParameterToString(petId, this.Configuration)); // path parameter
-            if (apiKey != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("api_key", Org.OpenAPITools.Client.ClientUtils.ParameterToString(apiKey, this.Configuration)); // header parameter
-            }
-
-            // authentication (petstore_auth) required
-            // oauth required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<object>("/pet/{petId}", localVarRequestOptions);
-
-            return localVarResponse;
+            return DeletePetWithHttpInfoAsync(petId, apiKey).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -248,7 +184,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task DeletePetAsync(long petId, string? apiKey = null)
         {
-            await DeletePetWithHttpInfoAsync(petId, apiKey);
+            await DeletePetWithHttpInfoAsync(petId, apiKey).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -292,7 +228,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.DeleteAsync<object>("/pet/{petId}", localVarRequestOptions);
+            var localVarResponse = await this.Client.DeleteAsync<object>("/pet/{petId}", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -305,8 +241,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>IReadOnlyList&lt;Pet&gt;</returns>
         public IReadOnlyList<Pet> FindPetsByStatus(IReadOnlyList<string> status)
         {
-            var localVarResponse = FindPetsByStatusWithHttpInfo(status);
-            return localVarResponse.Data;
+            return FindPetsByStatusAsync(status).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -317,38 +252,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of IReadOnlyList&lt;Pet&gt;</returns>
         public Org.OpenAPITools.Client.ApiResponse<IReadOnlyList<Pet>> FindPetsByStatusWithHttpInfo(IReadOnlyList<string> status)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/xml",
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("csv", "status", status, this.Configuration));
-
-            // authentication (petstore_auth) required
-            // oauth required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<IReadOnlyList<Pet>>("/pet/findByStatus", localVarRequestOptions);
-
-            return localVarResponse;
+            return FindPetsByStatusWithHttpInfoAsync(status).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -359,7 +263,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of IReadOnlyList&lt;Pet&gt;</returns>
         public async System.Threading.Tasks.Task<IReadOnlyList<Pet>> FindPetsByStatusAsync(IReadOnlyList<string> status)
         {
-            var localVarResponse = await FindPetsByStatusWithHttpInfoAsync(status);
+            var localVarResponse = await FindPetsByStatusWithHttpInfoAsync(status).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -401,7 +305,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.GetAsync<IReadOnlyList<Pet>>("/pet/findByStatus", localVarRequestOptions);
+            var localVarResponse = await this.Client.GetAsync<IReadOnlyList<Pet>>("/pet/findByStatus", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -414,8 +318,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>IReadOnlyList&lt;Pet&gt;</returns>
         public IReadOnlyList<Pet> FindPetsByTags(IReadOnlyList<string> tags)
         {
-            var localVarResponse = FindPetsByTagsWithHttpInfo(tags);
-            return localVarResponse.Data;
+            return FindPetsByTagsAsync(tags).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -426,38 +329,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of IReadOnlyList&lt;Pet&gt;</returns>
         public Org.OpenAPITools.Client.ApiResponse<IReadOnlyList<Pet>> FindPetsByTagsWithHttpInfo(IReadOnlyList<string> tags)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/xml",
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("csv", "tags", tags, this.Configuration));
-
-            // authentication (petstore_auth) required
-            // oauth required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<IReadOnlyList<Pet>>("/pet/findByTags", localVarRequestOptions);
-
-            return localVarResponse;
+            return FindPetsByTagsWithHttpInfoAsync(tags).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -468,7 +340,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of IReadOnlyList&lt;Pet&gt;</returns>
         public async System.Threading.Tasks.Task<IReadOnlyList<Pet>> FindPetsByTagsAsync(IReadOnlyList<string> tags)
         {
-            var localVarResponse = await FindPetsByTagsWithHttpInfoAsync(tags);
+            var localVarResponse = await FindPetsByTagsWithHttpInfoAsync(tags).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -510,7 +382,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.GetAsync<IReadOnlyList<Pet>>("/pet/findByTags", localVarRequestOptions);
+            var localVarResponse = await this.Client.GetAsync<IReadOnlyList<Pet>>("/pet/findByTags", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -523,8 +395,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Pet</returns>
         public Pet GetPetById(long petId)
         {
-            var localVarResponse = GetPetByIdWithHttpInfo(petId);
-            return localVarResponse.Data;
+            return GetPetByIdAsync(petId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -535,37 +406,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of Pet</returns>
         public Org.OpenAPITools.Client.ApiResponse<Pet> GetPetByIdWithHttpInfo(long petId)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/xml",
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("petId", Org.OpenAPITools.Client.ClientUtils.ParameterToString(petId, this.Configuration)); // path parameter
-
-            // authentication (api_key) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("api_key")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("api_key", this.Configuration.GetApiKeyWithPrefix("api_key"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Pet>("/pet/{petId}", localVarRequestOptions);
-
-            return localVarResponse;
+            return GetPetByIdWithHttpInfoAsync(petId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -576,7 +417,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of Pet</returns>
         public async System.Threading.Tasks.Task<Pet> GetPetByIdAsync(long petId)
         {
-            var localVarResponse = await GetPetByIdWithHttpInfoAsync(petId);
+            var localVarResponse = await GetPetByIdWithHttpInfoAsync(petId).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -617,7 +458,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.GetAsync<Pet>("/pet/{petId}", localVarRequestOptions);
+            var localVarResponse = await this.Client.GetAsync<Pet>("/pet/{petId}", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -630,7 +471,7 @@ namespace Org.OpenAPITools.Api
         /// <returns></returns>
         public void UpdatePet(Pet pet)
         {
-            UpdatePetWithHttpInfo(pet);
+            UpdatePetAsync(pet).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -641,38 +482,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of object(void)</returns>
         public Org.OpenAPITools.Client.ApiResponse<object> UpdatePetWithHttpInfo(Pet pet)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "application/json",
-                "application/xml"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.Data = pet;
-
-            // authentication (petstore_auth) required
-            // oauth required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<object>("/pet", localVarRequestOptions);
-
-            return localVarResponse;
+            return UpdatePetWithHttpInfoAsync(pet).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -683,7 +493,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task UpdatePetAsync(Pet pet)
         {
-            await UpdatePetWithHttpInfoAsync(pet);
+            await UpdatePetWithHttpInfoAsync(pet).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -724,7 +534,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PutAsync<object>("/pet", localVarRequestOptions);
+            var localVarResponse = await this.Client.PutAsync<object>("/pet", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -739,7 +549,7 @@ namespace Org.OpenAPITools.Api
         /// <returns></returns>
         public void UpdatePetWithForm(long petId, string? name = null, string? status = null)
         {
-            UpdatePetWithFormWithHttpInfo(petId, name, status);
+            UpdatePetWithFormAsync(petId, name, status).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -752,45 +562,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of object(void)</returns>
         public Org.OpenAPITools.Client.ApiResponse<object> UpdatePetWithFormWithHttpInfo(long petId, string? name = null, string? status = null)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "application/x-www-form-urlencoded"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("petId", Org.OpenAPITools.Client.ClientUtils.ParameterToString(petId, this.Configuration)); // path parameter
-            if (name != null)
-            {
-                localVarRequestOptions.FormParameters.Add("name", Org.OpenAPITools.Client.ClientUtils.ParameterToString(name, this.Configuration)); // form parameter
-            }
-            if (status != null)
-            {
-                localVarRequestOptions.FormParameters.Add("status", Org.OpenAPITools.Client.ClientUtils.ParameterToString(status, this.Configuration)); // form parameter
-            }
-
-            // authentication (petstore_auth) required
-            // oauth required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<object>("/pet/{petId}", localVarRequestOptions);
-
-            return localVarResponse;
+            return UpdatePetWithFormWithHttpInfoAsync(petId, name, status).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -803,7 +575,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task UpdatePetWithFormAsync(long petId, string? name = null, string? status = null)
         {
-            await UpdatePetWithFormWithHttpInfoAsync(petId, name, status);
+            await UpdatePetWithFormWithHttpInfoAsync(petId, name, status).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -853,7 +625,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PostAsync<object>("/pet/{petId}", localVarRequestOptions);
+            var localVarResponse = await this.Client.PostAsync<object>("/pet/{petId}", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -868,8 +640,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse</returns>
         public ApiResponse UploadFile(long petId, string? additionalMetadata = null, System.IO.Stream? file = null)
         {
-            var localVarResponse = UploadFileWithHttpInfo(petId, additionalMetadata, file);
-            return localVarResponse.Data;
+            return UploadFileAsync(petId, additionalMetadata, file).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -882,46 +653,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of ApiResponse</returns>
         public Org.OpenAPITools.Client.ApiResponse<ApiResponse> UploadFileWithHttpInfo(long petId, string? additionalMetadata = null, System.IO.Stream? file = null)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "multipart/form-data"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("petId", Org.OpenAPITools.Client.ClientUtils.ParameterToString(petId, this.Configuration)); // path parameter
-            if (additionalMetadata != null)
-            {
-                localVarRequestOptions.FormParameters.Add("additionalMetadata", Org.OpenAPITools.Client.ClientUtils.ParameterToString(additionalMetadata, this.Configuration)); // form parameter
-            }
-            if (file != null)
-            {
-                localVarRequestOptions.FileParameters.Add("file", file);
-            }
-
-            // authentication (petstore_auth) required
-            // oauth required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<ApiResponse>("/pet/{petId}/uploadImage", localVarRequestOptions);
-
-            return localVarResponse;
+            return UploadFileWithHttpInfoAsync(petId, additionalMetadata, file).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -934,7 +666,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of ApiResponse</returns>
         public async System.Threading.Tasks.Task<ApiResponse> UploadFileAsync(long petId, string? additionalMetadata = null, System.IO.Stream? file = null)
         {
-            var localVarResponse = await UploadFileWithHttpInfoAsync(petId, additionalMetadata, file);
+            var localVarResponse = await UploadFileWithHttpInfoAsync(petId, additionalMetadata, file).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -986,7 +718,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PostAsync<ApiResponse>("/pet/{petId}/uploadImage", localVarRequestOptions);
+            var localVarResponse = await this.Client.PostAsync<ApiResponse>("/pet/{petId}/uploadImage", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }
@@ -1001,8 +733,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse</returns>
         public ApiResponse UploadFileWithRequiredFile(long petId, System.IO.Stream requiredFile, string? additionalMetadata = null)
         {
-            var localVarResponse = UploadFileWithRequiredFileWithHttpInfo(petId, requiredFile, additionalMetadata);
-            return localVarResponse.Data;
+            return UploadFileWithRequiredFileAsync(petId, requiredFile, additionalMetadata).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1015,43 +746,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>ApiResponse of ApiResponse</returns>
         public Org.OpenAPITools.Client.ApiResponse<ApiResponse> UploadFileWithRequiredFileWithHttpInfo(long petId, System.IO.Stream requiredFile, string? additionalMetadata = null)
         {
-            var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
-
-            var contentTypes = new string[]
-            {
-                "multipart/form-data"
-            };
-
-            // to determine the Accept header
-            var accepts = new string[]
-            {
-                "application/json"
-            };
-
-            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("petId", Org.OpenAPITools.Client.ClientUtils.ParameterToString(petId, this.Configuration)); // path parameter
-            if (additionalMetadata != null)
-            {
-                localVarRequestOptions.FormParameters.Add("additionalMetadata", Org.OpenAPITools.Client.ClientUtils.ParameterToString(additionalMetadata, this.Configuration)); // form parameter
-            }
-            localVarRequestOptions.FileParameters.Add("requiredFile", requiredFile);
-
-            // authentication (petstore_auth) required
-            // oauth required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<ApiResponse>("/fake/{petId}/uploadImageWithRequiredFile", localVarRequestOptions);
-
-            return localVarResponse;
+            return UploadFileWithRequiredFileWithHttpInfoAsync(petId, requiredFile, additionalMetadata).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1064,7 +759,7 @@ namespace Org.OpenAPITools.Api
         /// <returns>Task of ApiResponse</returns>
         public async System.Threading.Tasks.Task<ApiResponse> UploadFileWithRequiredFileAsync(long petId, System.IO.Stream requiredFile, string? additionalMetadata = null)
         {
-            var localVarResponse = await UploadFileWithRequiredFileWithHttpInfoAsync(petId, requiredFile, additionalMetadata);
+            var localVarResponse = await UploadFileWithRequiredFileWithHttpInfoAsync(petId, requiredFile, additionalMetadata).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1113,7 +808,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.Client.PostAsync<ApiResponse>("/fake/{petId}/uploadImageWithRequiredFile", localVarRequestOptions);
+            var localVarResponse = await this.Client.PostAsync<ApiResponse>("/fake/{petId}/uploadImageWithRequiredFile", localVarRequestOptions).ConfigureAwait(false);
 
             return localVarResponse;
         }

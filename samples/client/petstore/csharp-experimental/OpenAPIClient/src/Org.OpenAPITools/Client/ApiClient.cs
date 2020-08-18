@@ -284,7 +284,7 @@ namespace Org.OpenAPITools.Client
             T result = response.Data;
             string rawContent = response.Content;
 
-            var transformed = new ApiResponse<T>(response.StatusCode, new Multimap<string, string>(), result, rawContent)
+            var transformed = new ApiResponse<T>(response.StatusCode, new Multimap<string, string>(StringComparer.OrdinalIgnoreCase), result, rawContent)
             {
                 ErrorText = response.ErrorMessage
             };
